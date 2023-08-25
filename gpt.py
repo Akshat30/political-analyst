@@ -18,12 +18,14 @@ if not validators.url(link):
 transcript = getTranscript(
     link)
 
+print("Original transcript estimated tokens:" + str(int(len(transcript) * 4.0/3.0)))
+
 # Summarize transcript using rapidapi
 url = "https://text-analysis12.p.rapidapi.com/summarize-text/api/v1.1"
 
 payload = {
 	"language": "english",
-	"summary_percent": 5,
+	"summary_percent": 10,
 	"text": transcript
 }
 headers = {
@@ -36,14 +38,16 @@ response = requests.post(url, json=payload, headers=headers)
 
 modifiedTranscript = response.json()['summary']
 
-# Generate prompt, check with user
-criteria = 'Present a summary with all the biases present, any inconsistencies, and false information, if any. Give an estimate percentage of the speech that is objective(based on facts) vs biased / falsified information. Here is the transcript to the speech: '
+print("Modified transcript estimated tokens:" + str(int(len(modifiedTranscript) * 4.0/3.0)))
 
-prompt = 'I will be giving you the transcript to a speech. ' + criteria + modifiedTranscript
+# Generate prompt, check with user
+criteria = 'Examine the speech transcript provided below with a keen focus on identifying any biases, inconsistencies, and false information present. Craft a comprehensive summary that elucidates these biases, discrepancies, and inaccuracies, if detected. Additionally, furnish an approximate percentage representing the extent of objective content rooted in facts versus the portion containing biases or inaccuracies. Transcript: '
+
+prompt = criteria + modifiedTranscript
 
 print("\nYour generated prompt: \n" + prompt + "\n\n")
 
-print("Are you sure the prompt above is correct (y for yes, anything else terminate)? ")
+print("Confirm prompt (y for yes): ")
 answer = input()
 
 if(answer != "y"):
@@ -51,6 +55,6 @@ if(answer != "y"):
 
 # Send prompt to chatgpt and display response
 response = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo", messages=[{"role": "user", "content": prompt}])
+    model="gpt-3.5-turbo", messages=[{"role": "user", "content": prompt}], temperature=0)
 
 print("Response from ChatGPT: \n" + response['choices'][0]['message']['content'])
