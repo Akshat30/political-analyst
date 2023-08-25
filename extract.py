@@ -2,17 +2,18 @@
 # libraries
 import urllib
 from bs4 import BeautifulSoup
+import validators
 
 # Returns all the transcript links present on the given rev.com link
 
 class Extractor:
-    def __init__(self, url):
-        self.url = url
+    def __init__(self):
+        pass
 
-    def getLinks(self, url):
+    def getLinks(self, listing_url):
         # Fetching the html
         try:
-            request = urllib.request.Request(url)
+            request = urllib.request.Request(listing_url)
             content = urllib.request.urlopen(request)
             # Parsing the html
             parse = BeautifulSoup(content, 'html.parser')
@@ -34,6 +35,10 @@ class Extractor:
 
     # Returns the transcript of speech from the given link for rev
     def getTranscript(self, url):
+
+        if not validators.url(url):
+            raise Exception("Invalid link: {0}".format(url))            
+
         # Fetching the html
         req = urllib.request.Request(url)
         con = urllib.request.urlopen(req)
