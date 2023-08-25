@@ -15,35 +15,34 @@ if not validators.url(link):
     exit()
 
 # Load transcript from link
-transcript = getTranscript(
-    link)
+transcript = getTranscript(link)
 
 #print("Original transcript estimated tokens:" + str(int(len(transcript) * 4.0/3.0)))
 
 percents = [80, 60, 40, 20]
 summarizedTranscripts = []
 summarizedTranscripts.append(transcript)
-# for percent in percents:
-#     # Summarize transcript using rapidapi
-#     url = "https://text-analysis12.p.rapidapi.com/summarize-text/api/v1.1"
+for percent in percents:
+    # Summarize transcript using rapidapi
+    url = "https://text-analysis12.p.rapidapi.com/summarize-text/api/v1.1"
 
-#     payload = {
-#         "language": "english",
-#         "summary_percent": percent,
-#         "text": transcript
-#     }
-#     headers = {
-#         "content-type": "application/json",
-#         "X-RapidAPI-Key": "370f129b86msh4cfc9f14064026bp1c2f3djsn0213cbec04ff",
-#         "X-RapidAPI-Host": "text-analysis12.p.rapidapi.com"
-#     }
+    payload = {
+        "language": "english",
+        "summary_percent": percent,
+        "text": transcript
+    }
+    headers = {
+        "content-type": "application/json",
+        "X-RapidAPI-Key": "370f129b86msh4cfc9f14064026bp1c2f3djsn0213cbec04ff",
+        "X-RapidAPI-Host": "text-analysis12.p.rapidapi.com"
+    }
 
-#     response = requests.post(url, json=payload, headers=headers)
+    response = requests.post(url, json=payload, headers=headers)
 
-#     modifiedTranscript = response.json()['summary']
-#     summarizedTranscripts.append(modifiedTranscript)
+    modifiedTranscript = response.json()['summary']
+    summarizedTranscripts.append(modifiedTranscript)
 
-# print("Modified transcript estimated tokens:" + str(int(len(modifiedTranscript) * 4.0/3.0)))
+print("Modified transcript estimated tokens:" + str(int(len(modifiedTranscript) * 4.0/3.0)))
 
 count = 100
 for tran in summarizedTranscripts:

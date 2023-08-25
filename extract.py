@@ -1,57 +1,58 @@
 # Script to extract html code from a website
 # libraries
-import urllib.request
+import urllib
 from bs4 import BeautifulSoup
 
 # Returns all the transcript links present on the given rev.com link
 
+class Extractor:
+    def __init__(self, url):
+        self.url = url
 
-def getLinks(url):
-    # Fetching the html
-    try:
-        request = urllib.request.Request(url)
-        content = urllib.request.urlopen(request)
+    def getLinks(self, url):
+        # Fetching the html
+        try:
+            request = urllib.request.Request(url)
+            content = urllib.request.urlopen(request)
+            # Parsing the html
+            parse = BeautifulSoup(content, 'html.parser')
+        except urllib.error.URLError as e:
+            print(f"An error occurred: {e}")
+            return None
+
+        # Provide html elements' attributes to extract the data
+        div_tags = parse.find_all('div', attrs={'fl-post-column'})
+        links = []
+
+        for div_tag in div_tags:
+            a_tag = div_tag.find('a')
+            if a_tag:
+                link = a_tag['href']
+                links.append(link)
+
+        return links
+
+    # Returns the transcript of speech from the given link for rev
+    def getTranscript(self, url):
+        # Fetching the html
+        req = urllib.request.Request(url)
+        con = urllib.request.urlopen(req)
+
         # Parsing the html
-        parse = BeautifulSoup(content, 'html.parser')
-    except urllib.error.URLError as e:
-        print(f"An error occurred: {e}")
-        return None
+        soup = BeautifulSoup(con, 'html.parser')
 
-    # Provide html elements' attributes to extract the data
-    div_tags = parse.find_all('div', attrs={'fl-post-column'})
-    links = []
+        div_tags = soup.find_all('div', attrs={'fl-callout-text'})
 
-    for div_tag in div_tags:
-        a_tag = div_tag.find('a')
-        if a_tag:
-            link = a_tag['href']
-            links.append(link)
+        # Extract and format the text from each <p> tag
+        formatted_text = ""
 
-    return links
+        for div_tag in div_tags:
+            text = div_tag.get_text(strip=True)
+            if text:
+                # Add two newline characters to separate transcript entries
+                formatted_text += text + "\n\n"
 
-# Returns the transcript of speech from the given link for rev
-
-
-def getTranscript(link):
-    # Fetching the html
-    req = urllib.request.Request(link)
-    con = urllib.request.urlopen(req)
-
-    # Parsing the html
-    soup = BeautifulSoup(con, 'html.parser')
-
-    div_tags = soup.find_all('div', attrs={'fl-callout-text'})
-
-    # Extract and format the text from each <p> tag
-    formatted_text = ""
-
-    for div_tag in div_tags:
-        text = div_tag.get_text(strip=True)
-        if text:
-            # Add two newline characters to separate transcript entries
-            formatted_text += text + "\n\n"
-
-    return formatted_text
+        return formatted_text
 
 
 # categorylink = 'https://www.rev.com/blog/transcript-category/political-transcripts'
