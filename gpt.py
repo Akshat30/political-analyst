@@ -84,10 +84,7 @@ class BiasDetector:
                 fp.write("Transcript Percentage {0} and Char Count: {1} and Length ratio: {2} \n\nTranscript: \n{3}\n\nResponse: \n{4}\n \n \n".format(sumpercent, charcount, ratio, tran, gptresponse))
             
             count-=20
-
-    
         
-
 if __name__ == "__main__":
     print("Enter a VALID link to a transcript from rev.com: ")
     url = input()
