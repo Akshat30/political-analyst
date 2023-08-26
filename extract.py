@@ -4,14 +4,15 @@ import urllib
 from bs4 import BeautifulSoup
 import validators
 import requests
+import os
+from dotenv import load_dotenv
 
 # Returns all the transcript links present on the given rev.com link
 
 class Extractor:
-    def __init__(self, url):
-        self.url = url
-        if not validators.url(self.url):
-            raise ValueError("Invalid link: {0}".format(self.url))    
+    def __init__(self):
+        load_dotenv()
+        self.extracter_api_key = os.getenv("EXTRACTER_API_KEY")
 
     def getLinks(self, listing_url):
         # Fetching the html
@@ -38,15 +39,15 @@ class Extractor:
 
 
     # Returns the transcript of speech from the given link for rev
-    def getTranscript(self, url=None):
-        if url:
-            self.url = url
+    def getTranscript(self, url):
+        if not validators.url(url):
+            raise ValueError("Invalid link: {0}".format(url))
 
-        if 'rev.com' in self.url:
+        if 'rev.com' in url:
             print('[Using hard-coded function for rev.com]')        
 
             # Fetching the html
-            req = urllib.request.Request(self.url)
+            req = urllib.request.Request(url)
             con = urllib.request.urlopen(req)
 
             # Parsing the html
@@ -69,8 +70,8 @@ class Extractor:
             endpoint = "https://extractorapi.com/api/v1/extractor"
 
             params = {
-                "apikey": "418285cde14600f1a120861a1198d0dd273d7fe4",
-                "url": self.url
+                "apikey": self.extracter_api_key,
+                "url": url
             }
 
             r = requests.get(endpoint, params=params)
