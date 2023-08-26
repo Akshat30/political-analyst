@@ -40,14 +40,13 @@ class BiasDetector:
         response = requests.post(api_url, json=payload, headers=headers)
         modified_transcript = response.json()['summary']
 
-        print("Modified transcript estimated tokens:" + str(int(len(modified_transcript) * 4.0/3.0)))
-
         return modified_transcript
     
     def summarizeMultiple(self, transcript_url, percents):
         # Extract transcript if not extracted already
-        if not transcript_url:
+        if transcript_url:
             self.transcript = self.extractor.getTranscript(transcript_url)
+                
 
         summarized_transcripts = []
         summarized_transcripts.append(self.transcript)
@@ -64,17 +63,19 @@ class BiasDetector:
 
             prompt = criteria + tran
 
-            # print("Confirm prompt (y for yes): ")
-            # answer = input()
+            print(prompt + "\n")
 
-            # if(answer != "y"):
-            #     exit()
+            print("Confirm prompt (y for yes): ")
+            answer = input()
+
+            if(answer != "y"):
+                exit()
 
             # Send prompt to chatgpt and display response
             response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo", messages=[{"role": "user", "content": prompt}], temperature = 0)
 
-            filetowrite = 'trump.txt'
+            filetowrite = 'vivek2.txt'
             sumpercent = str(count)
             charcount = str(len(tran))
             ratio = str(len(tran)/len(summarized_transcripts[0]))

@@ -3,6 +3,7 @@
 import urllib
 from bs4 import BeautifulSoup
 import validators
+import requests
 
 # Returns all the transcript links present on the given rev.com link
 
@@ -35,29 +36,41 @@ class Extractor:
 
     # Returns the transcript of speech from the given link for rev
     def getTranscript(self, url):
+        if 'rev.com' in url:
+            print('[Using hard-coded function for rev.com]')
+            if not validators.url(url):
+                raise Exception("Invalid link: {0}".format(url))            
 
-        if not validators.url(url):
-            raise Exception("Invalid link: {0}".format(url))            
+            # Fetching the html
+            req = urllib.request.Request(url)
+            con = urllib.request.urlopen(req)
 
-        # Fetching the html
-        req = urllib.request.Request(url)
-        con = urllib.request.urlopen(req)
+            # Parsing the html
+            soup = BeautifulSoup(con, 'html.parser')
 
-        # Parsing the html
-        soup = BeautifulSoup(con, 'html.parser')
+            div_tags = soup.find_all('div', attrs={'fl-callout-text'})
 
-        div_tags = soup.find_all('div', attrs={'fl-callout-text'})
+            # Extract and format the text from each <p> tag
+            formatted_text = ""
 
-        # Extract and format the text from each <p> tag
-        formatted_text = ""
+            for div_tag in div_tags:
+                text = div_tag.get_text(strip=True)
+                if text:
+                    # Add two newline characters to separate transcript entries
+                    formatted_text += text + "\n\n"
 
-        for div_tag in div_tags:
-            text = div_tag.get_text(strip=True)
-            if text:
-                # Add two newline characters to separate transcript entries
-                formatted_text += text + "\n\n"
+            return formatted_text
+        else:
+            print('[Using extractor api]')
+            endpoint = "https://extractorapi.com/api/v1/extractor"
 
-        return formatted_text
+            params = {
+                "apikey": "418285cde14600f1a120861a1198d0dd273d7fe4",
+                "url": url
+            }
+
+            r = requests.get(endpoint, params=params)
+            return (r.json()['text'])
 
 
 # categorylink = 'https://www.rev.com/blog/transcript-category/political-transcripts'
