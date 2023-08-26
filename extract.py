@@ -8,8 +8,10 @@ import requests
 # Returns all the transcript links present on the given rev.com link
 
 class Extractor:
-    def __init__(self):
-        pass
+    def __init__(self, url):
+        self.url = url
+        if not validators.url(self.url):
+            raise ValueError("Invalid link: {0}".format(self.url))    
 
     def getLinks(self, listing_url):
         # Fetching the html
@@ -34,15 +36,17 @@ class Extractor:
 
         return links
 
+
     # Returns the transcript of speech from the given link for rev
-    def getTranscript(self, url):
-        if 'rev.com' in url:
-            print('[Using hard-coded function for rev.com]')
-            if not validators.url(url):
-                raise Exception("Invalid link: {0}".format(url))            
+    def getTranscript(self, url=None):
+        if url:
+            self.url = url
+
+        if 'rev.com' in self.url:
+            print('[Using hard-coded function for rev.com]')        
 
             # Fetching the html
-            req = urllib.request.Request(url)
+            req = urllib.request.Request(self.url)
             con = urllib.request.urlopen(req)
 
             # Parsing the html
@@ -66,11 +70,12 @@ class Extractor:
 
             params = {
                 "apikey": "418285cde14600f1a120861a1198d0dd273d7fe4",
-                "url": url
+                "url": self.url
             }
 
             r = requests.get(endpoint, params=params)
-            return (r.json()['text'])
+            formatted_text =  r.json()['text']
+            return formatted_text.replace("\n", "")
 
 
 # categorylink = 'https://www.rev.com/blog/transcript-category/political-transcripts'
