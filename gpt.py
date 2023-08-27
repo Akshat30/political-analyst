@@ -77,17 +77,29 @@ class BiasDetector:
             criteria_num_tokens + curr_text_tokens))
 
         # Summarize text by 20% each time until it fits into GPT
-        percent = 80
+        percent = 60
         summarized = text
-        while percent > 0 and curr_text_tokens > max_text_tokens:
-            summarized = self.summarize(text, percent)
+        percents = [60, 50, 40, 30, 20, 15, 10, 5]
+        idx = 0
+        while idx < len(percents) and curr_text_tokens > max_text_tokens:
+            summarized = self.summarize(text, percents[idx])
             curr_text_tokens = self.numTokensFromString(summarized)
-            percent -= 10
+            idx+=1
 
         print("Final amount of total tokens: {0}".format(
             criteria_num_tokens + curr_text_tokens))
         return self.criteria + summarized
 
+    def send(self, prompt, debug=False):
+        # Send prompt to chatgpt and display response
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo", messages=[{"role": "user", "content": prompt}], temperature=0)
+
+        if debug:
+            print(response)
+
+        return response['choices'][0]['message']['content']
+    
     def genPrompt2(self, text, debug=False):
         MAX_TOKENS = 3500
         criteria_num_tokens = self.numTokensFromString(self.criteria)
@@ -129,16 +141,6 @@ class BiasDetector:
             criteria_num_tokens + curr_text_tokens))
 
         return self.criteria + summarized
-
-    def send(self, prompt, debug=False):
-        # Send prompt to chatgpt and display response
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo", messages=[{"role": "user", "content": prompt}], temperature=0)
-
-        if debug:
-            print(response)
-
-        return response['choices'][0]['message']['content']
     
     def testGenPrompt2(self, category_link):
         ex = Extractor()
