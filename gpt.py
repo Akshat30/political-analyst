@@ -6,6 +6,8 @@ import validators
 import tiktoken
 from dotenv import load_dotenv
 import csv
+from scipy.optimize import curve_fit
+import numpy as np
 
 class BiasDetector:
 
@@ -71,12 +73,59 @@ class BiasDetector:
 
         # Summarize text by 20% each time until it fits into GPT
         percent = 80
+        summarized = text
         while percent > 0 and curr_text_tokens > max_text_tokens:
             summarized = self.summarize(text, percent)
             curr_text_tokens = self.numTokensFromString(summarized)
             percent -= 10
             
         print("Final amount of total tokens: {0}".format(criteria_num_tokens + curr_text_tokens))
+        return self.criteria + summarized
+    
+    def genPrompt2(self, text, debug=False):
+        MAX_TOKENS = 4096
+        criteria_num_tokens = self.numTokensFromString(self.criteria)
+
+        # Calculate the max amt of tokens we can input into prompt after criteria
+        max_text_tokens = MAX_TOKENS - criteria_num_tokens
+
+        # Current tokens the original text holds
+        curr_text_tokens = self.numTokensFromString(text)
+
+        print("Current amount of total tokens: {0}".format(
+            criteria_num_tokens + curr_text_tokens))
+
+        # Summarize text by 20% each time until it fits into GPT
+        maxLength = max_text_tokens*5
+
+        if(curr_text_tokens <= max_text_tokens):
+            return self.criteria + text
+        
+        # Given data
+        original_lengths = np.array(
+            [25328, 25328, 25328, 25328, 25328, 25328, 25328, 25328, 25328, 25328])
+        returned_lengths = np.array(
+            [25328, 25229, 24545, 23003, 21016, 18147, 15952, 11812, 8273, 4634])
+        summary_percents = np.array([100, 90, 80, 70, 60, 50, 40, 30, 20, 10])
+
+        def power_law(x, k):
+            return original_lengths * (x / 100) ** k
+        
+        params, _ = curve_fit(power_law, summary_percents, returned_lengths)
+        k = params[0]
+        
+        def calculate_summary_percent(desired_length):
+            return (desired_length / original_lengths[0]) ** (1 / k) * 100
+
+        summary_percent = calculate_summary_percent(maxLength)
+        print(f"Using Summary Percent: {summary_percent:.2f}%")
+
+        summarized = self.summarize(text, summary_percent)
+
+        curr_text_tokens = self.numTokensFromString(summarized)
+        print("Final amount of total tokens: {0}".format(
+            criteria_num_tokens + curr_text_tokens))
+        
         return self.criteria + summarized
     
     def send(self, prompt, debug=False):
