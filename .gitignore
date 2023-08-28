@@ -3,19 +3,19 @@
 .DS_Store
 
 # dependencies
-/node_modules
-/.pnp
-.pnp.js
+web-app/node_modules
+web-app/.pnp
+web-app.pnp.js
 
 # testing
-/coverage
+web-app/coverage
 
 # next.js
-/.next/
-/out/
+web-app/.next/
+web-app/out/
 
 # production
-/build
+web-app/build
 
 # misc
 .DS_Store
