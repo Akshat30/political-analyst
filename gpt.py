@@ -167,9 +167,9 @@ class BiasDetector:
             if(curr_text_tokens > max_text_tokens):
                 numSen = len(sent_tokenize(text))
 
-                # fivePer = self.summarize(text, 2)
+                fivePer = self.summarize(text, 2)
 
-                summary_percent = (maxLength/20)/numSen * 100
+                summary_percent = (maxLength/(len(fivePer)/len(sent_tokenize(fivePer))))/numSen * 100
                 print(str(maxLength/20))
                 print(str(numSen))
                 print(str(summary_percent))
