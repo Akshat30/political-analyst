@@ -19,6 +19,8 @@ class BiasDetector {
     // Directions for GPT
     this.criteria =
       "Examine the speech transcript provided below with a keen focus on identifying any biases, inconsistencies, and false information present. Craft a comprehensive summary that elucidates these biases, discrepancies, and inaccuracies, if detected. Detail the points that are the most biased. Additionally, furnish an approximate percentage representing the extent of objective content rooted in facts versus the portion containing biases or inaccuracies. Transcript: ";
+    this.criteriaForFactCheck =
+      "Examine the speech transcript provided. Your goal is to detemine the statements that need to be fact checked so that you can provide an accurate analysis. Thus, give me all the statements present in this transcript that should be fact checked. However, frame the statements for me in a manner that contains all relevant context for that statement, so a standalone fact check for that statement can be done accurately. Transcript: ";
   }
 
   // Estimates the number of tokens the current string contains, for gpt
@@ -108,9 +110,13 @@ class BiasDetector {
   }
 
   // Generates a prompt that includes the criteria and a summarized version of the transcript that fits gpt model requirements
-  async genPrompt(text) {
+  async genPrompt(text, factCheck = false) {
+    let question = this.criteria;
+    if (factCheck) {
+      question = this.criteriaForFactCheck;
+    }
     const MAX_TOKENS = 3500;
-    const criteriaNumTokens = this.numTokensFromString(this.criteria);
+    const criteriaNumTokens = this.numTokensFromString(question);
 
     // Calculate the max amount of tokens we can input into the prompt after criteria
     const maxTextTokens = MAX_TOKENS - criteriaNumTokens;
@@ -133,7 +139,7 @@ class BiasDetector {
       idx++;
     }
 
-    return this.criteria + summarized;
+    return question + summarized;
   }
 
   // Sends prompt to openai api for gpt-3.5-turbo to return response
@@ -154,7 +160,8 @@ class BiasDetector {
   const detector = new BiasDetector();
   const transcript = await detector.getTranscript(url);
 
-  const prompt = await detector.genPrompt(transcript);
+  const factCheck = false;
+  const prompt = await detector.genPrompt(transcript, factCheck);
 
   console.log(await detector.send(prompt));
 })();
