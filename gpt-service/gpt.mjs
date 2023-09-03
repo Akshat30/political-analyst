@@ -20,7 +20,7 @@ class BiasDetector {
     this.criteria =
       "Examine the speech transcript provided below with a keen focus on identifying any biases, inconsistencies, and false information present. Craft a comprehensive summary that elucidates these biases, discrepancies, and inaccuracies, if detected. Detail the points that are the most biased. Additionally, furnish an approximate percentage representing the extent of objective content rooted in facts versus the portion containing biases or inaccuracies. Transcript: ";
     this.criteriaForFactCheck =
-      "Examine the speech transcript provided. Your goal is to detemine the statements that need to be fact checked so that you can provide an accurate analysis. Thus, give me all the statements present in this transcript that should be fact checked. However, frame the statements for me in a manner that contains all relevant context for that statement, so a standalone fact check for that statement can be done accurately. Transcript: ";
+      "Examine the speech transcript provided. You will be fact checking important information, so give me a list of objective questions you would like answered, but only that you think google can actually provide a number or qualitative data for within the first few links. Transcript: ";
   }
 
   // Estimates the number of tokens the current string contains, for gpt
@@ -160,7 +160,7 @@ class BiasDetector {
   const detector = new BiasDetector();
   const transcript = await detector.getTranscript(url);
 
-  const factCheck = false;
+  const factCheck = true;
   const prompt = await detector.genPrompt(transcript, factCheck);
 
   console.log(await detector.send(prompt));
