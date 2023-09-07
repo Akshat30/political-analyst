@@ -30,9 +30,9 @@ class BiasDetector {
     return numTokens;
   }
 
-  async googleSearch(query) {
-    const apiKey = "AIzaSyDqHv4qXd8YciSSgMSVjHvfwE6OfXbPX0g";
-    const cx = "13b72e0aba5084ad3";
+    async googleSearch(query) {
+    const apiKey = process.env.GOOGLE_API_KEY;
+    const cx = process.env.SEARCH_ENGINE_ID;
 
     const apiUrl = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${cx}&q=${query}`;
     let resultLinks = [];
