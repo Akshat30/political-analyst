@@ -20,7 +20,7 @@ class BiasDetector {
     this.criteria =
       "Examine the speech transcript provided below with a keen focus on identifying any biases, inconsistencies, and false information present. Craft a comprehensive summary that elucidates these biases, discrepancies, and inaccuracies, if detected. Detail the points that are the most biased. Additionally, furnish an approximate percentage representing the extent of objective content rooted in facts versus the portion containing biases or inaccuracies. Transcript: ";
     this.criteriaForFactCheck =
-      "Examine the speech transcript provided. You will be fact checking important information, so give me a list of objective questions you would like answered, but only that you think google can actually provide a number or qualitative data for within the first few links. Transcript: ";
+      "Examine the transcript. You will be analyzing information. Give me a list of the FIVE most objective important questions you would like answered, but only that you think google can actually provide a number or qualitative data for within the first few links. Make sure the questions ask for general information and I want extreme detail in the questions, since Google won't know what you're talking about and doesn't have access to these questions. Give as a list. Transcript: ";
   }
 
   // Estimates the number of tokens the current string contains, for gpt
@@ -28,6 +28,60 @@ class BiasDetector {
     const encoding = tiktoken.encoding_for_model("gpt-3.5-turbo");
     const numTokens = encoding.encode(string).length;
     return numTokens;
+  }
+
+  async googleSearch(query) {
+    const apiKey = "AIzaSyDqHv4qXd8YciSSgMSVjHvfwE6OfXbPX0g";
+    const cx = "13b72e0aba5084ad3";
+
+    const apiUrl = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${cx}&q=${query}`;
+    let resultLinks = [];
+    try {
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+
+      data.items.forEach((item, index) => {
+        resultLinks.push(item.link);
+      });
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+
+    return resultLinks;
+  }
+
+  async performSearchSummarization(questionString) {
+    const questions = questionString.split(/\d+\.\s+/);
+
+    // Filter out any empty strings from the result.
+    const filteredQuestions = questions
+      .filter((question) => question.trim() !== "")
+      .map((question) => question.trim());
+
+    const dict = {};
+    for (let i = 0; i < 2 && i < filteredQuestions.length; i++) {
+      const results = await this.googleSearch(filteredQuestions[i]);
+      console.log("\nQuestion: " + filteredQuestions[i] + "\n");
+
+      console.log("Link 0: " + results[0] + "\n");
+      console.log("Link 1: " + results[1] + "\n");
+      console.log("Link 2: " + results[2] + "\n");
+      const result0 = await this.summarize(
+        await this.getTranscript(results[0]),
+        5
+      );
+      const result1 = await this.summarize(
+        await this.getTranscript(results[1]),
+        5
+      );
+      const result2 = await this.summarize(
+        await this.getTranscript(results[2]),
+        5
+      );
+      dict[filteredQuestions[i]] = [result0, result1, result2];
+    }
+
+    return dict;
   }
 
   // Returns the relevant text from any website, uses html parsing for rev.com, and extractor api for any other website [limited 1000 calls]
@@ -160,8 +214,15 @@ class BiasDetector {
   const detector = new BiasDetector();
   const transcript = await detector.getTranscript(url);
 
-  const factCheck = true;
-  const prompt = await detector.genPrompt(transcript, factCheck);
+  const prompt = await detector.genPrompt(transcript, false);
 
-  console.log(await detector.send(prompt));
+  const result = await detector.send(prompt);
+
+  console.log(result);
+
+  //   const prompt = await detector.genPrompt(transcript, true);
+
+  //   const questions = await detector.send(prompt);
+
+  //   console.log(await detector.performSearchSummarization(questions));
 })();

@@ -2,8 +2,6 @@ import readline from "readline";
 import fetch from "node-fetch";
 
 // Define your API key and custom search engine ID
-const apiKey = "AIzaSyDqHv4qXd8YciSSgMSVjHvfwE6OfXbPX0g";
-const cx = "13b72e0aba5084ad3";
 
 // Function to make the API call and print the results
 async function makeAPICall(query) {
