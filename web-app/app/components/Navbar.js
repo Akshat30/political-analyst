@@ -6,13 +6,18 @@ function Navbar() {
     <nav className="navbar h-10">
         <div className="flex items-center">
             <div className="w-1/6 flex justify-start">
-              <Link href="/">
-                <a>Home</a>  {/* Updated to include an anchor tag */}
+              <Link href="/library">
+                <a className="text-black text-[15px] font-medium leading-normal">Library</a>
               </Link>
             </div>
             <div className="w-1/6 flex justify-start">
-              <Link href="/library">
-                <a className="text-black text-[15px] font-medium leading-normal">Library</a>
+              <Link href="/presidential-candidates">
+                <a className="text-black text-[15px] font-medium leading-normal">Presidential Candidates</a>
+              </Link>
+            </div>
+            <div className="w-1/6 flex justify-start">
+              <Link href="/about">
+                <a className="text-black text-[15px] font-medium leading-normal">About</a>
               </Link>
             </div>
             <div className="w-1/6 flex justify-start">
