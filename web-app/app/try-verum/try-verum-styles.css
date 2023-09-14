@@ -1,0 +1,36 @@
+
+.title {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    margin-bottom: 3rem;
+}
+
+.mt-24 {
+    margin-top: 3rem;
+}
+
+.text-entry-container {
+    color: rgba(0, 0, 0, 0.50);
+    display: flex;
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    border-radius: 20px;
+    background: var(--image, #F2F5F7);
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.input-link {
+    width: 100%;
+    border-radius: 15px;
+    border: 2px solid var(--headings, #8B8888);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+

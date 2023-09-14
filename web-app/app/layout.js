@@ -10,11 +10,12 @@ export const metadata = {
   description: 'Name.Ai',
 }
 
+
 export default function RootLayout({ children }) {
   return (
  
     <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.className} style={{ backgroundColor: '#FFF' }}>
         <Navbar />
         <main className="mt-24 flex min-h-screen flex-col px-6 antialiased">
           {children}
