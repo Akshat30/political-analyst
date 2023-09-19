@@ -34,3 +34,6 @@
     gap: 10px;
 }
 
+.center {
+    justify-content: center;
+}

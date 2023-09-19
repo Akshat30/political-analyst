@@ -1,17 +1,19 @@
+"use client";
+
 import './globals.css'
 import { Inter } from 'next/font/google'
 import Navbar from './components/Navbar.js';
 import Footer from './components/Footer.js';
+import React from 'react';
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
-  title: 'Name.Ai',
-  description: 'Name.Ai',
-}
 
 
 export default function RootLayout({ children }) {
+  React.useEffect(() => {
+    document.body.style.backgroundColor = "black";
+  }, []);
   return (
  
     <html lang="en">

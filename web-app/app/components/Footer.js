@@ -4,7 +4,7 @@ import React from 'react'
 export default function Footer() {
   return (
     <footer class="bg-white rounded-lg shadow m-16">
-      <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+      {/* <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
           <div class="md:flex md:justify-between">
             <div class="mb-6 md:mb-0">
                 <a href="/" class="flex items-center">
@@ -69,7 +69,45 @@ export default function Footer() {
             <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="/" class="hover:underline">Name.ai</a> / Dereck / AJ / Megan / Juliana / Marco
             </span>
         </div>
-      </div>
+      </div> */}
+
+        <div className="w-full px-14 py-10 bg-neutral-800 flex flex-col items-center gap-2.5">
+          <div className="w-full flex flex-col items-start gap-[78px]">
+            <div className="w-full flex flex-wrap justify-between gap-4">
+              <div className="flex flex-col items-start gap-4">
+                <div className="flex items-center gap-2.5">
+                  <img className="w-[69.55px] h-[34.02px] transform -rotate-12 rounded-sm" src="https://via.placeholder.com/70x34" />
+                  <div className="text-neutral-200 text-2xl font-bold leading-normal">Candidate Match</div>
+                </div>
+                <div className="w-full md:w-auto opacity-90 text-neutral-200 text-base font-medium leading-normal">Helping you make informed voting decisions for the 2024 Presidential Election</div>
+              </div>
+              <div className="flex flex-col md:flex-row gap-4">
+                <div className="flex flex-col items-start gap-4">
+                  <div className="text-amber-300 text-lg font-bold leading-normal">Verum</div>
+                  <div className="text-neutral-200 text-base font-medium leading-normal">About</div>
+                  <div className="text-neutral-200 text-base font-medium leading-normal">Register to Vote</div>
+                </div>
+                <div className="flex flex-col items-start gap-4">
+                  <div className="text-amber-300 text-lg font-bold leading-normal">Library</div>
+                  <div className="text-neutral-200 text-base font-medium leading-normal">Speeches</div>
+                  <div className="text-neutral-200 text-base font-medium leading-normal">Articles</div>
+                  <div className="text-neutral-200 text-base font-medium leading-normal">Texts</div>
+                </div>
+                <div className="flex flex-col items-start gap-4">
+                  <div className="text-amber-300 text-lg font-bold leading-normal">Presidential Candidates</div>
+                  <div className="text-neutral-200 text-base font-medium leading-normal">Republican</div>
+                  <div className="text-neutral-200 text-base font-medium leading-normal">Democratic</div>
+                  <div className="text-neutral-200 text-base font-medium leading-normal">Independent</div>
+                </div>
+              </div>
+            </div>
+            <div className="w-full flex justify-end items-center">
+              <div className="text-neutral-200 text-sm font-medium leading-normal">© 2023 Candidate Match / Dereck / AJ / Megan / Juliana / Marco / Celeste</div>
+            </div>
+          </div>
+        </div>
+        
+        
   </footer>
   )
 }
