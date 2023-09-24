@@ -2,3 +2,5 @@
 __pycache__/
 *.py[cod]
 
+/lambda/__pycache__/
+/lambda/package/
