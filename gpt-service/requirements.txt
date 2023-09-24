@@ -1,0 +1,5 @@
+openai
+bs4
+validators
+tiktoken
+python-dotenv
