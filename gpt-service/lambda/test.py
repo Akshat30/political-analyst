@@ -6,7 +6,7 @@ from main import handler
 if __name__ == "__main__":
     start = time.time()
     event = open('event.json')
-    response = handler(event=event, context=None)
+    response = handler(event=json.load(event), context=None)
     print(response)
 
     end = time.time()
