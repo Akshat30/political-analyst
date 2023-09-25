@@ -1,5 +1,6 @@
 /**
  * Send request with text in body to AWS API Gateway
+ * NOTE: Takes about 5-10 seconds to receive a response
  * @param {string} text - text to be sent to AWS API Gateway
  * @returns {Promise} - Promise object represents response from AWS API Gateway to display to user
  * @throws {Error} - if text is not a string or is empty
@@ -39,6 +40,7 @@ export async function sendText(text) {
 
 /**
  * Send request with link in body to AWS API Gateway
+ * NOTE: Takes about 5-10 seconds to receive a response
  * @param {string} link - link to be sent to AWS API Gateway
  * @returns {Promise} - Promise object represents response from AWS API Gateway to display to user
  * @throws {Error} - if link is not a string or is empty
