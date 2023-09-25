@@ -128,7 +128,7 @@ function TryVernum() {
         
       </div> */}
 
-      <div className="w-full h-full py-3 flex flex-col items-center gap-[335px] ">
+      {/* <div className="w-full h-full py-3 flex flex-col items-center gap-[335px] ">
         <div className="w-full max-w-[1328px] h-[507px] flex items-start gap-[22px]">
           <div className="w-[414px] h-full p-6 bg-neutral-800 rounded-[20px] flex flex-col items-start gap-2.5">
             <div className="flex items-center gap-4">
@@ -210,7 +210,87 @@ function TryVernum() {
             </div>
           </div>
         </div>
+      </div> */}
+
+      <div className="w-full h-full py-3 flex flex-col items-center gap-[335px]">
+          <div className="w-full max-w-[1328px] h-[507px] flex items-start gap-[22px]">
+              
+              {/* Left Column */}
+              <div className="w-[414px] h-full p-6 bg-neutral-800 rounded-[20px] flex flex-col items-start gap-2.5">
+                  <div className="text-neutral-200 text-xl font-bold leading-normal mb-2">Verum.Ai</div>
+                  <div className="w-full border-b border-neutral-200 my-2"></div>
+                  
+                  <div className="flex flex-col items-start gap-16">
+                      <div className="flex flex-col items-start gap-9">
+                          {['text', 'link'].map((type, idx) => (
+                              <Link href={`/upload-${type}`} className="flex items-center gap-4" key={idx}>
+                                  <div className={`w-[51px] h-[51px] p-[15px] bg-${type === 'text' ? 'neutral' : 'violet'}-700 rounded-[10px] flex items-center gap-2.5`}>
+                                      <Image src={type === 'text' ? text_symbol : link_symbol} alt={type} width={800} height={800}/> 
+                                  </div>
+                                  <div className="text-neutral-200 text-lg font-bold leading-normal">Upload {type.charAt(0).toUpperCase() + type.slice(1)}</div>
+                              </Link>
+                          ))}
+                      </div>
+                  </div>
+                          
+                  <div className="py-2 rounded-[10px] flex flex-col items-center gap-[9px]">
+                      <div className="text-center text-neutral-200 text-base font-medium leading-normal">Don’t have a document to upload?</div>
+                      <div className="w-full px-9 py-4 rounded-[20px] border-2 border-neutral-200 flex items-center justify-center ">
+                          <div className="justify-center text-gray-100 text-lg font-medium leading-normal">View Our Library</div>
+                      </div>
+                  </div>
+              </div>
+                          
+              {/* Right Column */}
+              <div className="w-full flex flex-col items-start gap-10">
+                  {['Link Entry', 'Verum'].map((title, idx) => (
+                      <div className="w-full flex flex-col items-start" key={idx}>
+                          <div className={`h-[50px] pl-[31px] pr-8 py-[13px] bg-violet-700 rounded-t-[20px] flex items-center`}>
+                              <div className="text-neutral-200 text-base font-bold leading-normal">{title}</div>
+                          </div>
+                          <div className={`w-full ${title === 'Link Entry' ? 'h-[223px]' : 'h-36'} p-6 bg-neutral-700 rounded-b-[20px] rounded-r-[20px] flex flex-col items-start gap-6`}>
+                              <div className="text-neutral-200 text-base font-medium leading-normal">{title === 'Link Entry' ? 'Copy/paste or type in bodies of text you wish to analyze.' : 'Upload a text, link, file to get started'}</div>
+                              
+                              {title === 'Link Entry' ? 
+                                  <InputField 
+                                      className="input-link w-full h-14 px-6 py-4 rounded-[15px] border-2 border-neutral-200 flex items-start"
+                                      placeholder="Enter Text..."
+                                      inputText={inputText}
+                                      setInputText={setInputText}
+                                      style={{
+                                        width: '100%',
+                                        borderRadius: '15px',
+                                        border: '2px solid var(--text, #E0E0E0)',
+                                        backgroundColor: '#393939',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'flex-start',
+                                        gap: '10px',
+                                        paddingLeft: '1em'
+                                    }}
+                                  />
+                                  : <div className="w-full h-14 px-6 py-4 rounded-[15px] border-2 border-neutral-200 flex items-start">
+                                        <div className="text-neutral-200 text-base font-medium leading-normal">Awaiting Results...</div>
+                                    </div>
+                              }
+      
+                              {title === 'Link Entry' && (
+                                  <div className="w-full flex items-center justify-end gap-2.5">
+                                      <div className="p-3 rounded-[20px] border-2 border-neutral-200 flex items-center gap-4">
+                                          <button className="text-neutral-200 text-lg font-bold leading-normal"
+                                              onClick={handleButtonClick}>
+                                              Send to Vernum
+                                          </button>
+                                      </div>
+                                  </div>
+                              )}
+                          </div>
+                      </div>
+                  ))}
+              </div>
+          </div>
       </div>
+                              
 
 
       </>

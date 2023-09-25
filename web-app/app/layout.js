@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function RootLayout({ children }) {
   React.useEffect(() => {
-    document.body.style.backgroundColor = "black";
+    document.body.style.backgroundColor = "white";
   }, []);
   return (
  
