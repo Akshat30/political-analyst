@@ -1,13 +1,14 @@
 # Script to extract html code from a website
 # libraries
-# import urllib
-# from bs4 import BeautifulSoup
-# import validators
+import urllib
+from bs4 import BeautifulSoup
+import validators
 import requests
 import os
 from dotenv import load_dotenv
 
 # Returns all the transcript links present on the given rev.com link
+
 
 class Extractor:
     def __init__(self, extractor_api_key=None):
@@ -21,41 +22,52 @@ class Extractor:
         # if not validators.url(url):
         #     raise ValueError("Invalid link: {0}".format(url))
 
-        if 'rev.com' in url:
-            print('[Using hard-coded function for rev.com]')        
+        # if 'rev.com' in url:
+        #     print('[Using hard-coded function for rev.com]')
 
-            # Fetching the html
-            # req = urllib.request.Request(url)
-            # print(req)
-            # con = urllib.request.urlopen(req)
+        #     # Fetching the html
+        #     req = urllib.request.Request(url)
+        #     print(req)
+        #     con = urllib.request.urlopen(req)
 
-            # # Parsing the html
-            # soup = BeautifulSoup(con, 'html.parser')
+        #     # Parsing the html
+        #     soup = BeautifulSoup(con, 'html.parser')
 
-            # div_tags = soup.find_all('div', attrs={'fl-callout-text'})
+        #     div_tags = soup.find_all('div', attrs={'fl-callout-text'})
 
-            # # Extract and format the text from each <p> tag
-            # formatted_text = ""
+        #     # Extract and format the text from each <p> tag
+        #     formatted_text = ""
 
-            # for div_tag in div_tags:
-            #     text = div_tag.get_text(strip=True)
-            #     if text:
-            #         # Add two newline characters to separate transcript entries
-            #         formatted_text += text + "\n\n"
+        #     for div_tag in div_tags:
+        #         text = div_tag.get_text(strip=True)
+        #         if text:
+        #             # Add two newline characters to separate transcript entries
+        #             formatted_text += text + "\n\n"
 
-            # return formatted_text
-        else:
-            print('[Using extractor api]')
-            endpoint = "https://extractorapi.com/api/v1/extractor"
+        #     return formatted_text
+        # else:
+        print('[Using extractor api]')
+        endpoint = "https://extractorapi.com/api/v1/extractor"
 
-            params = {
-                "apikey": self.extractor_api_key,
-                "url": url
-            }
+        params = {
+            "apikey": self.extractor_api_key,
+            "url": url
+        }
 
-            r = requests.get(endpoint, params=params)
-            formatted_text =  r.json()['text']
-            return formatted_text.replace("\n", "")
+        r = requests.get(endpoint, params=params)
+        formatted_text = r.json()['text']
+        return formatted_text.replace("\n", "")
+
+
+if __name__ == "__main__":
+    print("Enter the link to a transcript/article:")
+    url = input()
+    load_dotenv()
+    extractor_api_key = os.getenv("EXTRACTOR_API_KEY")
+    ex = Extractor(extractor_api_key)
+    transcript = ex.getTranscript(url)
+
+    print(transcript)
 
 
 # def getLinks(self, listing_url):
