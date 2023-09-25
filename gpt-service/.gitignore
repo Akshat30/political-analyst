@@ -4,3 +4,5 @@ __pycache__/
 
 /lambda/__pycache__/
 /lambda/package/
+
+.DS_Store
