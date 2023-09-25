@@ -1,8 +1,8 @@
 # Script to extract html code from a website
 # libraries
-import urllib
-from bs4 import BeautifulSoup
-import validators
+# import urllib
+# from bs4 import BeautifulSoup
+# import validators
 import requests
 import os
 from dotenv import load_dotenv
@@ -16,58 +16,34 @@ class Extractor:
             extractor_api_key = os.environ.get('EXTRACTOR_API_KEY')
         self.extractor_api_key = extractor_api_key
 
-    def getLinks(self, listing_url):
-        # Fetching the html
-        try:
-            request = urllib.request.Request(listing_url)
-            content = urllib.request.urlopen(request)
-            # Parsing the html
-            parse = BeautifulSoup(content, 'html.parser')
-        except urllib.error.URLError as e:
-            print(f"An error occurred: {e}")
-            return None
-
-        # Provide html elements' attributes to extract the data
-        div_tags = parse.find_all('div', attrs={'fl-post-column'})
-        links = []
-
-        for div_tag in div_tags:
-            a_tag = div_tag.find('a')
-            if a_tag:
-                link = a_tag['href']
-                links.append(link)
-
-        return links
-
-
     # Returns the transcript of speech from the given link for rev
     def getTranscript(self, url):
-        if not validators.url(url):
-            raise ValueError("Invalid link: {0}".format(url))
+        # if not validators.url(url):
+        #     raise ValueError("Invalid link: {0}".format(url))
 
         if 'rev.com' in url:
             print('[Using hard-coded function for rev.com]')        
 
             # Fetching the html
-            req = urllib.request.Request(url)
-            print(req)
-            con = urllib.request.urlopen(req)
+            # req = urllib.request.Request(url)
+            # print(req)
+            # con = urllib.request.urlopen(req)
 
-            # Parsing the html
-            soup = BeautifulSoup(con, 'html.parser')
+            # # Parsing the html
+            # soup = BeautifulSoup(con, 'html.parser')
 
-            div_tags = soup.find_all('div', attrs={'fl-callout-text'})
+            # div_tags = soup.find_all('div', attrs={'fl-callout-text'})
 
-            # Extract and format the text from each <p> tag
-            formatted_text = ""
+            # # Extract and format the text from each <p> tag
+            # formatted_text = ""
 
-            for div_tag in div_tags:
-                text = div_tag.get_text(strip=True)
-                if text:
-                    # Add two newline characters to separate transcript entries
-                    formatted_text += text + "\n\n"
+            # for div_tag in div_tags:
+            #     text = div_tag.get_text(strip=True)
+            #     if text:
+            #         # Add two newline characters to separate transcript entries
+            #         formatted_text += text + "\n\n"
 
-            return formatted_text
+            # return formatted_text
         else:
             print('[Using extractor api]')
             endpoint = "https://extractorapi.com/api/v1/extractor"
@@ -81,6 +57,29 @@ class Extractor:
             formatted_text =  r.json()['text']
             return formatted_text.replace("\n", "")
 
+
+# def getLinks(self, listing_url):
+#         # Fetching the html
+#         try:
+#             request = urllib.request.Request(listing_url)
+#             content = urllib.request.urlopen(request)
+#             # Parsing the html
+#             parse = BeautifulSoup(content, 'html.parser')
+#         except urllib.error.URLError as e:
+#             print(f"An error occurred: {e}")
+#             return None
+
+#         # Provide html elements' attributes to extract the data
+#         div_tags = parse.find_all('div', attrs={'fl-post-column'})
+#         links = []
+
+#         for div_tag in div_tags:
+#             a_tag = div_tag.find('a')
+#             if a_tag:
+#                 link = a_tag['href']
+#                 links.append(link)
+
+#         return links
 
 # categorylink = 'https://www.rev.com/blog/transcript-category/political-transcripts'
 

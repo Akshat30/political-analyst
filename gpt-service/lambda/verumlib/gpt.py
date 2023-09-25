@@ -2,12 +2,8 @@ import requests
 import os
 import openai
 from verumlib.extract import Extractor
-import validators
 import tiktoken
 from dotenv import load_dotenv
-import csv
-from scipy.optimize import curve_fit
-import numpy as np
 
 
 class BiasDetector:

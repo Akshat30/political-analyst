@@ -1,13 +1,15 @@
 import json
-from handler import textHandler
+import time
+from main import handler
+
 
 if __name__ == "__main__":
-    event = {}
-    event["queryStringParameters"] = {
-        "text": "",
-        "link": "https://www.cnn.com/2023/08/25/politics/haley-ramaswamy-gop-debate-iowa-voters/index.html"
-    }
-    context = {}
-
-    response = textHandler(json.dumps(event), context)
+    start = time.time()
+    event = open('event.json')
+    response = handler(event=event, context=None)
     print(response)
+
+    end = time.time()
+    hours, rem = divmod(end-start, 3600)
+    minutes, seconds = divmod(rem, 60)
+    print("{:0>2}:{:0>2}:{:05.2f}".format(int(hours),int(minutes),seconds))
