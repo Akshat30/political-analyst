@@ -41,7 +41,6 @@ def handler(event, context):
     EXTRACTOR_API_KEY = os.environ.get('EXTRACTER_API_KEY')
 
     response = {}
-    extractor = Extractor(EXTRACTOR_API_KEY)
     bias_detector = BiasDetector(OPENAI_API_KEY, X_RAPIDAPI_KEY, EXTRACTOR_API_KEY)
 
     # Extract text from event

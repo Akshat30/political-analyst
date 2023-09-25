@@ -1,8 +1,0 @@
-aws-cdk-lib==2.96.2
-constructs>=10.0.0,<11.0.0
-openai
-bs4
-validators
-tiktoken
-python-dotenv
-scipy
