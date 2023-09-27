@@ -1,8 +1,8 @@
 # Script to extract html code from a website
 # libraries
-import urllib
-from bs4 import BeautifulSoup
-import validators
+# import urllib
+# import validators
+# from bs4 import BeautifulSoup
 import requests
 import os
 from dotenv import load_dotenv
@@ -56,7 +56,8 @@ class Extractor:
 
         r = requests.get(endpoint, params=params)
         formatted_text = r.json()['text']
-        return formatted_text.replace("\n", "")
+        formatted_text = formatted_text.replace("\n", "")
+        return formatted_text
 
 
 if __name__ == "__main__":

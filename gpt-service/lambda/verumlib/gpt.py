@@ -40,6 +40,9 @@ class BiasDetector:
         return transcript
 
     def summarize(self, transcript, percent=100):
+        # Cap transcript at 100,000 chars
+        if len(transcript) > 100000:
+            transcript = transcript[:100000]
 
         if percent == 100:
             return transcript
@@ -57,7 +60,6 @@ class BiasDetector:
             "X-RapidAPI-Key": self.x_rapidapi_key,
             "X-RapidAPI-Host": "text-analysis12.p.rapidapi.com"
         }
-
         response = requests.post(api_url, json=payload, headers=headers)
         if not response.json()['ok']:
             raise ValueError(response.json()['msg'])

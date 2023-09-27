@@ -7,10 +7,15 @@ import os
 Helper functions for the text processing pipeline
 """
 def scrapeText(bias_detector: BiasDetector, link: str) -> str:
-    return bias_detector.getTranscript(link)
+    print('Getting transcript from link:', link)
+    formatted_text = bias_detector.getTranscript(link)
+    print('Formatted text:', formatted_text) if len(formatted_text) < 1000 else print('Formatted text:', formatted_text[:1000] + '...')
+    return formatted_text
 
 def generatePrompt(bias_detector: BiasDetector, original_text: str) -> str:
-    return bias_detector.genPrompt(original_text)
+    prompt = bias_detector.genPrompt(original_text)
+    print("Prompt generated:", prompt) if len(prompt) < 1000 else print("Prompt generated:", prompt[:1000] + '...')
+    return prompt
 
 def sendProcessedPrompt(bias_detector: BiasDetector, prompt: str) -> json:
     return bias_detector.send(prompt)
@@ -76,5 +81,7 @@ def handler(event, context):
     response['headers'] = {}
     response['headers']['Content-Type'] = 'application/json'
     response['body'] = json.dumps(analysis)
+
+    print("Final response:", response)
 
     return response
