@@ -132,7 +132,7 @@ function TryVernum() {
                     </div>
                     <div className="text-neutral-200 text-lg font-bold leading-normal">Upload Text</div>
                   </div>
-                  <Link href="/upload-link" class="flex items-center gap-4">
+                  <Link href="/upload-link" className="flex items-center gap-4">
                     <div className="w-[51px] h-[51px] p-[15px] bg-neutral-700 rounded-[10px] flex items-center gap-2.5">
                     <Image src={link_symbol} alt="r" width={800} height={800}/> 
                     </div>

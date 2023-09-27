@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className} style={{ backgroundColor: '#FFF' }}>
         <Navbar />
-        <main className="mt-24 flex min-h-screen flex-col px-6 antialiased">
+        <main className="mt-16 flex min-h-screen flex-col antialiased">
           {children}
         </main>
         <Footer />

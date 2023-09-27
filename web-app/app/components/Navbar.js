@@ -3,7 +3,7 @@ import './Navbar.css';
 
 function Navbar() {
   return (
-    <nav class="navbar" >
+    <nav className="navbar" >
 
         {/* LOGO & PRODUCT NAME IMAGE LINKS  TODO: change later */}
 
@@ -39,20 +39,20 @@ function Navbar() {
               <div className="w-[79.18px] h-[42.90px] relative">
               {/* <img src="web-app/logo.png" alt="Logo" class="w-full h-full object-cover" /> */}
               </div>
-              <Link href="/" class="text-neutral-900 text-xl font-bold leading-normal">Candidate Match</Link>
+              <Link href="/" className="text-neutral-900 text-xl font-bold leading-normal">Candidate Match</Link>
             </div>
             <div className="justify-center items-center gap-6 flex">
               <div className="opacity-90 text-neutral-900 text-base font-medium leading-normal">About</div>
               <div className="opacity-90 text-neutral-900 text-base font-medium leading-normal">Library</div>
-              <div className="opacity-90 text-neutral-900 text-base font-medium leading-normal">Presidential Candidates</div>
+              <Link href="/presidential-candidates" className="opacity-90 text-neutral-900 text-base font-medium leading-normal">Presidential Candidates</Link>
             </div>
           </div>
           <div className="grow shrink basis-0  justify-end items-start gap-6 flex">
             <div className="px-6 py-3 rounded-[100px] bg-amber-300 hover:bg-amber-400 justify-center items-center gap-1 flex">
-              <Link href="https://vote.gov/"class="text-center text-black text-base font-semibold leading-snug tracking-tight">Register to Vote</Link>
+              <Link href="https://vote.gov/"className="text-center text-black text-base font-semibold leading-snug tracking-tight">Register to Vote</Link>
             </div>
             <div className="px-6 py-3 bg-violet-700 hover:bg-violet-500 rounded-[100px] justify-center items-center gap-1 flex">
-              <Link href="/upload-text" class="text-center text-white text-base font-semibold leading-snug tracking-tight">Try Verum</Link>
+              <Link href="/upload-text" className="text-center text-white text-base font-semibold leading-snug tracking-tight">Try Verum</Link>
             </div>
           </div>
         </div>
