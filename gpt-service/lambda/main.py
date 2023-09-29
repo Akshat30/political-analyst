@@ -49,7 +49,7 @@ def handler(event, context):
     bias_detector = BiasDetector(OPENAI_API_KEY, X_RAPIDAPI_KEY, EXTRACTOR_API_KEY)
 
     # Extract text from event
-    decoded_body = event["queryStringParameters"]
+    decoded_body = json.loads(event["body"])
     
     if not decoded_body:
         response['statusCode'] = 400

@@ -1,13 +1,13 @@
 {"version": "2.0", 
-"routeKey": "POST /chat", 
-"rawPath": "/chat", 
+"routeKey": "POST /analysis", 
+"rawPath": "/analysis", 
 "rawQueryString": "", 
 "headers": {
   "accept": "", 
   "accept-encoding": "gzip, deflate, br", 
   "content-length": "119", 
   "content-type": "application/json", 
-  "host": "6nmdei0ejb.execute-api.us-west-1.amazonaws.com", 
+  "host": "xhjwcepvug.execute-api.us-west-1.amazonaws.com", 
   "user-agent": "Thunder Client (https://www.thunderclient.com)", 
   "x-amzn-trace-id": "Root=1-650fb544-3e6fcec83c1f20a01fa27446", 
   "x-forwarded-for": "72.197.34.214", 
@@ -16,12 +16,12 @@
   }, 
 "requestContext": {
   "accountId": "824762796470", 
-  "apiId": "6nmdei0ejb", 
-  "domainName": "6nmdei0ejb.execute-api.us-west-1.amazonaws.com", 
-  "domainPrefix": "6nmdei0ejb", 
+  "apiId": "xhjwcepvug", 
+  "domainName": "xhjwcepvug.execute-api.us-west-1.amazonaws.com", 
+  "domainPrefix": "xhjwcepvug", 
   "http": {
     "method": "POST", 
-    "path": "/chat", 
+    "path": "/analysis", 
     "protocol": "HTTP/1.1", 
     "sourceIp": "72.197.34.214", 
     "userAgent": "Thunder Client (https://www.thunderclient.com)"
