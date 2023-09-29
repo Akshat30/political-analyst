@@ -16,7 +16,6 @@ export default function InputScreen() {
             </h1>
             <div className="w-2/3 mt-4">
               <p className="text-gray-400 text-lg font-semibold">
-                {sendLink("https://www.cnn.com/2023/09/15/opinions/mitt-romney-republicans-senate-retirement-trump-chen/index.html")}
               </p>
             </div>
           </div>
