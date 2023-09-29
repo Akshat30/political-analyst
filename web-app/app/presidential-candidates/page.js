@@ -39,7 +39,7 @@ function TryVernum() {
                       last={key}
                     />
                   ) : (
-                    <></>
+                    <React.Fragment key={key}></React.Fragment>
                   )
                 )}
               </div>
@@ -62,7 +62,7 @@ function TryVernum() {
                       last={key}
                     />
                   ) : (
-                    <></>
+                    <React.Fragment key={key}></React.Fragment>
                   )
                 )}
               </div>
@@ -85,7 +85,7 @@ function TryVernum() {
                       last={key}
                     />
                   ) : (
-                    <></>
+                    <React.Fragment key={key}></React.Fragment>
                   )
                 )}
               </div>
