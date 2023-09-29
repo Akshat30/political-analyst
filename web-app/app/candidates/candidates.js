@@ -56,10 +56,10 @@ export const candidates = {
     ],
     transcripts: [
       {
-        url: "t1url",
-        name: "Transcript 1",
+        url: "https://www.rev.com/blog/transcripts/donald-trump-speaks-to-striking-uaw-members-transcript",
+        name: "Donald Trump Speaks to Striking UAW Members Transcript",
         date: "September 28, 2023",
-        desc: "hi this is some sample text that i am writing that is supposed to be a short description of the speech that this link is referring to.",
+        desc: "Donald Trump discusses auto industry, trade, and foreign policy in Michigan, promises to revitalize American manufacturing.",
       },
       {
         url: "t2url",
