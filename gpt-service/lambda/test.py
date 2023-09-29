@@ -5,7 +5,7 @@ from main import handler
 
 if __name__ == "__main__":
     start = time.time()
-    event = open('event.json')
+    event = open('tests/get-event.json')
     response = handler(event=json.load(event), context=None)
     print(response)
 
