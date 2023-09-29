@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import { candidates } from "../candidates";
+import { candidates } from "../candidates2";
 import Image from "next/image";
-import Link from "next/link";
+import { AiFillRightCircle } from "react-icons/ai";
 
 function Page({ params }) {
   const cand = params.slug;
@@ -20,7 +20,7 @@ function Page({ params }) {
       <div className="w-full h-full py-3 flex flex-col">
         <div className="ml-20 mr-20">
           <h1 className="text-[#131313] text-4xl font-bold">{name}</h1>
-          <div className="w-2/3 mt-4 mb-4">
+          <div className="w-2/3 mt-1 mb-4">
             <span className="text-gray-400 text-lg font-semibold">
               {subheading}
             </span>
@@ -41,15 +41,13 @@ function Page({ params }) {
             </span>
           </div>
           <div className="flex flex-row">
-            <div className="w-1/4 bg-gray-100">
+            <div className="w-1/4 bg-gray-100 rounded-xl">
               <div className="flex flex-col w-full">
-                <div classname="w-full px-6">
+                <div className="w-full px-2">
                   <div className="relative h-full">
-                    <Image
-                      alt={name}
-                      src={img}
-                      className="rounded-md py-6 px-6"
-                    />
+                    <div className="py-6 px-6">
+                      <Image className="rounded-lg" alt={name} src={img} />
+                    </div>
                   </div>
 
                   <p className="mt-2 px-6 text-gray-900 text-sm font-regular">
@@ -90,24 +88,31 @@ function Page({ params }) {
                 Recent Documents
               </p>
               <div className="grid grid-cols-2 gap-4">
-                {transcripts.map((transcript) => (
-                  <a href={transcript.url}>
-                    <div className="ml-4 w-full bg-gray-100 rounded-xl hover:bg-gray-200">
+                {transcripts.map((transcript, index) => (
+                  <a key={index} href={transcript.url}>
+                    <div className="ml-4 w-full rounded-xl transition duration-500 bg-gray-100 hover:bg-gray-200 hover:scale-[1.03]">
                       <div>
                         <div className="flex flex-col w-full">
-                          <div classname="w-full px-6">
-                            <p className="mt-4 px-6 text-gray-900 text-lg font-bold underline">
-                              {transcript.name}
-                            </p>
+                          <div className="w-full px-6">
+                            <div className="flex flex-row">
+                              <div className="w-3/4">
+                                <p className="mt-4 text-gray-900 text-lg font-bold underline">
+                                  {transcript.name}
+                                </p>
+                              </div>
+                              <div className="w-1/4 flex justify-end mt-4 text-2xl">
+                                <AiFillRightCircle className="text-gray-900" />
+                              </div>
+                            </div>
 
-                            <p className="mt-2 px-6 text-gray-900 text-sm font-regular">
+                            <p className="mt-2 text-gray-900 text-sm font-regular">
                               <span className="text-indigo-600 font-semibold">
                                 Date:
                               </span>{" "}
                               {transcript.date}
                             </p>
 
-                            <p className="mt-2 px-6 text-gray-900 text-sm font-regular mb-4">
+                            <p className="mt-2 text-gray-900 text-sm font-regular mb-4">
                               {transcript.desc}
                             </p>
                           </div>
@@ -120,18 +125,18 @@ function Page({ params }) {
             </div>
           </div>
           <div className="w-full">
-            <p className="ml-4 mt-6 mb-2 text-xl font-bold text-indigo-600">
+            <p className="mt-12 mb-2 text-3xl font-bold text-indigo-600">
               About
             </p>
-            <p className="ml-4 mt-6 mb-2 text-sm font-regular text-gray-900">
-              {about.map((para) => (
-                <p>
+            <div className="mt-6 mb-2 text-lg font-regular text-gray-900">
+              {about.map((para, index) => (
+                <p key={index}>
                   {para}
                   <br />
                   <br />
                 </p>
               ))}
-            </p>
+            </div>
           </div>
         </div>
       </div>
