@@ -94,6 +94,7 @@ class BiasDetector:
         print("Final amount of total tokens: {0}".format(
             criteria_num_tokens + curr_text_tokens))
         print(f"Final percentage summarized by: {percents[idx]}")
+        print(f"\n\n{summarized}\n\n")
         return self.criteria + summarized
 
     def send(self, prompt, debug=False):
