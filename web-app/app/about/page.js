@@ -5,6 +5,7 @@ import aj from "./aj.jpeg";
 import megan from "./megan.png";
 import derick from "./derick.jpg";
 import marco from "./marco.jpg";
+import juliana from "./juliana.jpg";
 import Image from "next/image";
 import defaultImg from "./default.jpeg";
 import Link from "next/link";
@@ -151,12 +152,13 @@ function About() {
                 linkedin={"https://www.linkedin.com/in/ma-parede/"}
               />
               <TeamMember
-                img={defaultImg}
+                img={juliana}
                 name={"Juliana Viado"}
                 role={"Product Designer -- UX Researcher"}
                 occupation={"UX & Product Designer"}
                 schoolInfo={"'23 Design Graduate @ UC Davis"}
-                portfolio={"/about"}
+                portfolio={"https://julianaviado.com/"}
+                linkedin={"https://www.linkedin.com/in/juliana-viado"}
               />
               <TeamMember
                 img={defaultImg}
