@@ -279,7 +279,7 @@ function TryVernum() {
                                       <div className="p-3 rounded-[20px] border-2 border-neutral-200 flex items-center gap-4">
                                           <button className="text-neutral-200 text-lg font-bold leading-normal"
                                               onClick={handleButtonClick}>
-                                              Send to Vernum
+                                              Send to Verum
                                           </button>
                                       </div>
                                   </div>
