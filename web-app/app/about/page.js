@@ -3,9 +3,12 @@ import React, { useState } from "react";
 import aboutcover from "./about-cover.png";
 import aj from "./aj.jpeg";
 import megan from "./megan.png";
+import derick from "./derick.jpg";
+import marco from "./marco.jpg";
 import Image from "next/image";
-import trump from "../presidential-candidates/candidate-imgs/trump.png";
+import defaultImg from "./default.jpeg";
 import Link from "next/link";
+import TeamMember from "./TeamMember";
 
 function About() {
   return (
@@ -110,109 +113,59 @@ function About() {
             <h1 className="mt-2 text-[#131313] text-4xl font-bold">
               Meet the Team!
             </h1>
-            <div className="grid mt-4 grid-cols-3 gap-28 mb-12">
-              <div className="flex flex-col">
-                <div className="relative h-72 w-full">
-                  <Image src={aj} className="object-cover w-full h-full" />
-                </div>
-                <h1 className="text-gray-900 mt-4 text-lg font-bold">
-                  Dereck Villagrana
-                </h1>
-                <h1 className="text-indigo-400 mt-2 text-lg font-bold">
-                  Product Designer -- UX Researcher
-                </h1>
-                <p className="text-gray-900 mt-2 text-lg font-regular">
-                  UX & Product Designer
-                </p>
-                <p className="text-gray-900 text-md font-regular">
-                  '23 Design Graduate @ UC Davis
-                </p>
-              </div>
-              <div className="flex flex-col">
-                <div className="relative h-72 w-full">
-                  <Image src={aj} className="object-cover w-full h-full" />
-                </div>
-                <h1 className="text-gray-900 mt-4 text-lg font-bold">
-                  Akshat Jain
-                </h1>
-                <h1 className="text-indigo-400 mt-2 text-lg font-bold">
-                  Backend + Frontend Developer
-                </h1>
-                <p className="text-gray-900 mt-2 text-lg font-regular">
-                  Software Engineer
-                </p>
-                <p className="text-gray-900 text-md font-regular">
-                  '25 CS student @ UCSD
-                </p>
-              </div>
-              <div className="flex flex-col">
-                <div className="relative h-72 w-full">
-                  <Image src={megan} className="object-cover w-full h-full" />
-                </div>
-                <h1 className="text-gray-900 mt-4 text-lg font-bold">
-                  Megan Leong
-                </h1>
-                <h1 className="text-indigo-400 mt-2 text-lg font-bold">
-                  Backend + Frontend Develop
-                </h1>
-                <p className="text-gray-900 mt-2 text-lg font-regular">
-                  Software Engineer
-                </p>
-                <p className="text-gray-900 text-md font-regular">
-                  '25 Math-CS student @ UCSD
-                </p>
-              </div>
-              <div className="flex flex-col">
-                <div className="relative h-72 w-full">
-                  <Image src={megan} className="object-cover w-full h-full" />
-                </div>
-                <h1 className="text-gray-900 mt-4 text-lg font-bold">
-                  Marco Paredes
-                </h1>
-                <h1 className="text-indigo-400 mt-2 text-lg font-bold">
-                  Backend + Frontend Developer
-                </h1>
-                <p className="text-gray-900 mt-2 text-lg font-regular">
-                  Software Engineer
-                </p>
-                <p className="text-gray-900 text-md font-regular">
-                  '23 Electrical Engineering Grad @ UCSD
-                </p>
-              </div>
-              <div className="flex flex-col">
-                <div className="relative h-72 w-full">
-                  <Image src={megan} className="object-cover w-full h-full" />
-                </div>
-                <h1 className="text-gray-900 mt-4 text-lg font-bold">
-                  Juliana Viado
-                </h1>
-                <h1 className="text-indigo-400 mt-2 text-lg font-bold">
-                  Product Designer -- UX Researcher
-                </h1>
-                <p className="text-gray-900 mt-2 text-lg font-regular">
-                  UX & Product Designer
-                </p>
-                <p className="text-gray-900 text-md font-regular">
-                  '23 Design Grad @ UC Davis
-                </p>
-              </div>
-              <div className="flex flex-col">
-                <div className="relative h-72 w-full">
-                  <Image src={megan} className="object-cover w-full h-full" />
-                </div>
-                <h1 className="text-gray-900 mt-4 text-lg font-bold">
-                  Celeste Lu
-                </h1>
-                <h1 className="text-indigo-400 mt-2 text-lg font-bold">
-                  Product Designer -- UX Researcher
-                </h1>
-                <p className="text-gray-900 mt-2 text-lg font-regular">
-                  UX & Product Designer
-                </p>
-                <p className="text-gray-900 text-md font-regular">
-                  '24 Design Grad @ UC Davis
-                </p>
-              </div>
+            <div className="grid mt-12 grid-cols-3 gap-20 mb-12">
+              <TeamMember
+                img={derick}
+                name={"Derick Villagrana"}
+                role={"Product Designer -- UX Researcher"}
+                occupation={"UX & Product Designer"}
+                schoolInfo={"'23 Design Graduate @ UC Davis"}
+                portfolio={"https://dereckvilladesign.webflow.io/"}
+                linkedin={"https://www.linkedin.com/in/dereck-villagrana/"}
+              />
+              <TeamMember
+                img={aj}
+                name={"Akshat Jain"}
+                role={"Backend + Frontend Developer"}
+                occupation={"Software Engineer"}
+                schoolInfo={"'25 CS Student @ UCSD"}
+                portfolio={"https://akshatj.vercel.app"}
+                linkedin={"https://www.linkedin.com/in/akshatja1n/"}
+              />
+              <TeamMember
+                img={megan}
+                name={"Megan Leong"}
+                role={"Backend + Frontend Developer"}
+                occupation={"Software Engineer"}
+                schoolInfo={"'25 Math-CS Student @ UCSD"}
+                portfolio={"https://www.linkedin.com/in/mnleong"}
+                linkedin={"https://www.linkedin.com/in/mnleong"}
+              />
+              <TeamMember
+                img={marco}
+                name={"Marco Paredes"}
+                role={"Backend + Frontend Developer"}
+                occupation={"Software Engineer"}
+                schoolInfo={"'23 Electrical Engineering Grad @ UCSD"}
+                portfolio={"https://marcoparedes.vercel.app/"}
+                linkedin={"https://www.linkedin.com/in/ma-parede/"}
+              />
+              <TeamMember
+                img={defaultImg}
+                name={"Juliana Viado"}
+                role={"Product Designer -- UX Researcher"}
+                occupation={"UX & Product Designer"}
+                schoolInfo={"'23 Design Graduate @ UC Davis"}
+                portfolio={"/about"}
+              />
+              <TeamMember
+                img={defaultImg}
+                name={"Celeste Lu"}
+                role={"Product Designer -- UX Researcher"}
+                occupation={"UX & Product Designer"}
+                schoolInfo={"'24 Design Student @ UC Davis"}
+                portfolio={"/about"}
+              />
             </div>
           </div>
         </div>
