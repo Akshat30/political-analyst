@@ -1,6 +1,5 @@
 "use client";
 
-import "./upload-text-styles.css";
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,24 +29,7 @@ function TryVernum() {
             </div>
           </div>
         </div>
-        <div className="mt-12 bg-gray-100">
-          <div className="px-20 mt-4">
-            <h1 className="text-[#131313] text-2xl font-bold">Republicans</h1>
-            <div className="mt-4 mb-4">
-              <div className="grid grid-cols-4 gap-8">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mt-12 bg-gray-100 mb-12">
-          <div className="px-20 mt-4">
-            <h1 className="text-[#131313] text-2xl font-bold">Third-Party</h1>
-            <div className="mt-4 mb-4">
-              <div className="grid grid-cols-4 gap-8">
-              </div>
-            </div>
-          </div>
-        </div>
+       
       </div>
     </>
   );

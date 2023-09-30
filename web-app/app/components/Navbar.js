@@ -43,7 +43,7 @@ function Navbar() {
             </div>
             <div className="justify-center items-center gap-6 flex">
               <Link href="/about" className="opacity-90 text-neutral-900 text-base font-medium leading-normal">About</Link>
-              <div className="opacity-90 text-neutral-900 text-base font-medium leading-normal">Library</div>
+              <Link href="/library" className="opacity-90 text-neutral-900 text-base font-medium leading-normal">Library</Link>
               <Link href="/presidential-candidates" className="opacity-90 text-neutral-900 text-base font-medium leading-normal">Presidential Candidates</Link>
             </div>
           </div>

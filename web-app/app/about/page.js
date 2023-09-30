@@ -112,7 +112,7 @@ function About() {
           <div className="ml-12 px-20 mt-6">
             <h1 className="text-indigo-400 text-lg font-bold">Hello there!</h1>
             <h1 className="mt-2 text-[#131313] text-4xl font-bold">
-              Meet the Team!
+              Meet the Team
             </h1>
             <div className="grid mt-12 grid-cols-3 gap-20 mb-12">
               <TeamMember
