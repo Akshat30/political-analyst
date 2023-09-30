@@ -1,0 +1,37 @@
+{"version": "2.0", 
+"routeKey": "POST /analysis", 
+"rawPath": "/analysis", 
+"rawQueryString": "", 
+"headers": {
+  "accept": "", 
+  "accept-encoding": "gzip, deflate, br", 
+  "content-length": "119", 
+  "content-type": "application/json", 
+  "host": "xhjwcepvug.execute-api.us-west-1.amazonaws.com", 
+  "user-agent": "Thunder Client (https://www.thunderclient.com)", 
+  "x-amzn-trace-id": "Root=1-650fb544-3e6fcec83c1f20a01fa27446", 
+  "x-forwarded-for": "72.197.34.214", 
+  "x-forwarded-port": "443", 
+  "x-forwarded-proto": "https"
+  }, 
+"requestContext": {
+  "accountId": "824762796470", 
+  "apiId": "xhjwcepvug", 
+  "domainName": "xhjwcepvug.execute-api.us-west-1.amazonaws.com", 
+  "domainPrefix": "xhjwcepvug", 
+  "http": {
+    "method": "POST", 
+    "path": "/analysis", 
+    "protocol": "HTTP/1.1", 
+    "sourceIp": "72.197.34.214", 
+    "userAgent": "Thunder Client (https://www.thunderclient.com)"
+    }, 
+  "requestId": "LvlC0g4_yK4EMIw=", 
+  "routeKey": "POST /chat", 
+  "stage": "$default", 
+  "time": "24/Sep/2023:04:04:20 +0000", 
+  "timeEpoch": 1695528260998
+  }, 
+  "body": "{\n  \"text\": \"\",\n  \"link\": \"https://www.centralillinoisproud.com/hill-politics/cornel-west-plans-to-visit-detroit-in-support-of-striking-auto-workers/\"\n}", 
+  "isBase64Encoded": false
+}

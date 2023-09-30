@@ -31,7 +31,7 @@ export const candidates = {
   },
   kennedyjr: {
     name: "Robert F. Kennedy Jr.",
-    desc: "Current President",
+    desc: "American Environmental Lawyer",
     img: kennedyJr,
     party: "Democrat",
   },
@@ -40,6 +40,46 @@ export const candidates = {
     desc: "Former President & Businessman",
     img: trump,
     party: "Republican",
+    subheading: "45th President of United States",
+    website: "website",
+    birthday: "June 14, 1946",
+    about: [
+      "Donald Trump, born in 1946 in Queens, New York, is a businessman, TV personality, and politician. He inherited his family's real estate empire and expanded it globally, known for luxury properties and golf courses.",
+
+      "Trump entered politics as a Republican candidate in 2015. His unconventional and controversial campaign won him the 2016 presidential election. As the 45th President, he focused on economic deregulation, tax cuts, and conservative immigration policies.",
+
+      "Trump's presidency was marked by polarization, facing impeachment twice in 2019 and 2021 but acquitted both times. His term ended on January 20, 2021, with Joe Biden's inauguration.",
+
+      "Post-presidency, Trump remains influential in the Republican Party and American politics, leaving a significant and controversial impact on the nation's political discourse and policies.",
+
+      "Opinions on Donald Trump are deeply divided, making him a central figure in discussions about American politics and the future of the Republican Party.",
+    ],
+    transcripts: [
+      {
+        url: "https://www.rev.com/blog/transcripts/donald-trump-speaks-to-striking-uaw-members-transcript",
+        name: "Donald Trump Speaks to Striking UAW Members Transcript",
+        date: "September 28, 2023",
+        desc: "Donald Trump discusses auto industry, trade, and foreign policy in Michigan, promises to revitalize American manufacturing.",
+      },
+      {
+        url: "t2url",
+        name: "Transcript 2",
+        date: "September 28, 2023",
+        desc: "hi this is some sample text that i am writing that is supposed to be a short description of the speech that this link is referring to.",
+      },
+      {
+        url: "t3url",
+        name: "Transcript 3",
+        date: "September 28, 2023",
+        desc: "hi this is some sample text that i am writing that is supposed to be a short description of the speech that this link is referring to.",
+      },
+      {
+        url: "t4url",
+        name: "Transcript 4",
+        date: "September 28, 2023",
+        desc: "hi this is some sample text that i am writing that is supposed to be a short description of the speech that this link is referring to.",
+      },
+    ],
   },
   haley: {
     name: "Nikki Haley",

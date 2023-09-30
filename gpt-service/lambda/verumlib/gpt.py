@@ -81,10 +81,10 @@ class BiasDetector:
         print("Current amount of total tokens: {0}".format(
             criteria_num_tokens + curr_text_tokens))
 
-        # Summarize text by 20% each time until it fits into GPT
-        percent = 60
+        # Summarize text
         summarized = text
-        percents = [60, 50, 40, 30, 20, 15, 10, 5]
+        # percents = [60, 50, 40, 30, 20, 15, 10, 5]
+        percents = [50, 25, 10, 5]
         idx = 0
         while idx < len(percents) and curr_text_tokens > max_text_tokens:
             summarized = self.summarize(text, percents[idx])
@@ -93,6 +93,8 @@ class BiasDetector:
 
         print("Final amount of total tokens: {0}".format(
             criteria_num_tokens + curr_text_tokens))
+        print(f"Final percentage summarized by: {percents[idx]}")
+        print(f"\n\n{summarized}\n\n")
         return self.criteria + summarized
 
     def send(self, prompt, debug=False):

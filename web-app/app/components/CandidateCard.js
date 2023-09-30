@@ -2,18 +2,16 @@ import Link from "next/link";
 import "./Navbar.css";
 import Image from "next/image";
 
-function CandidateCard({ name, desc, party, img }) {
+function CandidateCard({ name, desc, party, img, last}) {
   return (
-    <div>
+    <Link href={"/candidates/" + last}>
       <div className="flex flex-col w-full">
-        <div classname="w-full">
+        <div className="w-full">
           <div className="relative h-36 w-full">
             <Image
               alt={name}
               src={img}
-              layout="fill"
-              objectFit="cover"
-              className="rounded-t-xl"
+              className="object-cover w-full h-full rounded-t-xl"
             />
           </div>
           <div className="bg-white rounded-b-xl">
@@ -37,7 +35,7 @@ function CandidateCard({ name, desc, party, img }) {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

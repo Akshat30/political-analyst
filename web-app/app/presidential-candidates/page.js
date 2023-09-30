@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import CandidateCard from "../components/CandidateCard";
-import {candidates} from "./candidates";
+import { candidates } from "../candidates/candidates"
 
 function TryVernum() {
   return (
@@ -28,15 +28,20 @@ function TryVernum() {
             <h1 className="text-[#131313] text-2xl font-bold">Democrats</h1>
             <div className="mt-4 mb-4">
               <div className="grid grid-cols-4 gap-8">
-                {candidates.democrats.map((candidate, index) => (
-                  <CandidateCard
-                    key={index}
-                    name={candidate.name}
-                    img={candidate.img}
-                    desc={candidate.desc}
-                    party={candidate.party}
-                  />
-                ))}
+                {Object.keys(candidates).map((key, index) =>
+                  candidates[key].party === "Democrat" ? (
+                    <CandidateCard
+                      key={index}
+                      name={candidates[key].name}
+                      img={candidates[key].img}
+                      desc={candidates[key].desc}
+                      party={candidates[key].party}
+                      last={key}
+                    />
+                  ) : (
+                    <React.Fragment key={key}></React.Fragment>
+                  )
+                )}
               </div>
             </div>
           </div>
@@ -46,15 +51,20 @@ function TryVernum() {
             <h1 className="text-[#131313] text-2xl font-bold">Republicans</h1>
             <div className="mt-4 mb-4">
               <div className="grid grid-cols-4 gap-8">
-                {candidates.republicans.map((candidate, index) => (
-                  <CandidateCard
-                    key={index}
-                    name={candidate.name}
-                    img={candidate.img}
-                    desc={candidate.desc}
-                    party={candidate.party}
-                  />
-                ))}
+                {Object.keys(candidates).map((key, index) =>
+                  candidates[key].party === "Republican" ? (
+                    <CandidateCard
+                      key={index}
+                      name={candidates[key].name}
+                      img={candidates[key].img}
+                      desc={candidates[key].desc}
+                      party={candidates[key].party}
+                      last={key}
+                    />
+                  ) : (
+                    <React.Fragment key={key}></React.Fragment>
+                  )
+                )}
               </div>
             </div>
           </div>
@@ -64,15 +74,20 @@ function TryVernum() {
             <h1 className="text-[#131313] text-2xl font-bold">Third-Party</h1>
             <div className="mt-4 mb-4">
               <div className="grid grid-cols-4 gap-8">
-                {candidates.thirdparty.map((candidate, index) => (
-                  <CandidateCard
-                    key={index}
-                    name={candidate.name}
-                    img={candidate.img}
-                    desc={candidate.desc}
-                    party={candidate.party}
-                  />
-                ))}
+                {Object.keys(candidates).map((key, index) =>
+                  candidates[key].party === "Third Party" ? (
+                    <CandidateCard
+                      key={index}
+                      name={candidates[key].name}
+                      img={candidates[key].img}
+                      desc={candidates[key].desc}
+                      party={candidates[key].party}
+                      last={key}
+                    />
+                  ) : (
+                    <React.Fragment key={key}></React.Fragment>
+                  )
+                )}
               </div>
             </div>
           </div>
