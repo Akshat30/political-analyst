@@ -33,7 +33,7 @@ function Navbar() {
         </div> */}
 
       <div className="mx-10 mt-2">
-        <div className="w-full pl-8 pr-6 py-4 rounded-[66px] border-2 border-black backdrop-blur-sm justify-center items-center gap-[33px] inline-flex">
+        <div className="w-full pl-8 pr-6 py-4 rounded-[66px] border-2 border-black bg-white justify-center items-center gap-[33px] inline-flex">
           <div className="justify-center items-center gap-12 flex">
             <div className="justify-center items-center flex">
               <div className="w-[79.18px] h-[42.90px] relative">
