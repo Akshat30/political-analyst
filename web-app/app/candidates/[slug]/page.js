@@ -89,7 +89,7 @@ function Page({ params }) {
               </p>
               <div className="grid grid-cols-2 gap-4">
                 {transcripts.map((transcript, index) => (
-                  <a key={index} href={transcript.url}>
+                  <a key={index} target="_blank" href={transcript.url}>
                     <div className="ml-4 w-full rounded-xl transition duration-500 bg-gray-100 hover:bg-gray-200 hover:scale-[1.03]">
                       <div>
                         <div className="flex flex-col w-full">
