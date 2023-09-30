@@ -100,10 +100,11 @@ function About() {
             </h1>
             <div className="mt-4 text-[#131313] text-lg font-regular mb-12">
               <p className="mt-6">
-                Short paragraph about the journey from the concept of the
-                back-end journey, to the final product. here you can explain the
-                different programs, languages, ai’s. etc. you used to make it.
-                the difficulties/challenges.
+                The journey from the concept of our back-end infrastructure to the final product was a dynamic and challenging process that involved a variety of technologies and components. We began by selecting a technology stack that included Next.js, React, and Tailwind for our front-end, offering a modern and responsive user interface. On the back end, we leveraged AWS services such as API Gateway, Lambda, and DynamoDB to create a robust serverless architecture that could efficiently handle user requests.
+
+                One of the key challenges we encountered was enabling the analysis of both plain text and web content. To address this, we integrated an external API to extract text from external websites, making use of AWS Lambda to orchestrate these processes. The core of our system was the integration of GPT-3.5 Turbo, an AI model, to perform bias and accuracy analysis. Managing the prompt input for GPT-3.5 Turbo was a task in itself, as we needed to dynamically summarize text to fit within prompt limits while preserving the context.
+
+                Throughout this journey, we tackled various technical hurdles, including optimizing API calls, handling asynchronous processes, and ensuring data privacy and security. However, the end result was a powerful and versatile system that could analyze text and web content for biases and inaccuracies, ultimately providing users with valuable insights into the information they encountered online. Our journey from concept to final product was marked by innovation, adaptability, and a commitment to delivering a robust solution in the realm of AI-driven content analysis.
               </p>
             </div>
           </div>
