@@ -17,18 +17,56 @@ import { sendLink } from '/app/analysis/analysis.js'
 function TryVernum() {
 
     const [inputText, setInputText] = useState('');
+    const [clicked, setClicked] = useState(false);
+    let [response] = useState('');
+
+    // const handleClicked = () => {
+    //   console.log('clicked')
+    //   setClicked(prevState => !prevState);
+    // }
+
+    // const handleClicked = async () => {
+    //   console.log("Button clicked");
+    //   try {
+    //     // const result = await sendLink("rev.com/blog/transcripts/chatgpt-announces-ai-chatbot-can-now-speak-transcript");
+        
+    //     // console.log("Received result:", result);
+    //     // Update the state or handle the result as needed
+    //     setClicked(prevState => !prevState);
+    //   } catch (error) {
+    //     console.error("Error in handleClicked:", error);
+    //   }
+    // }
+    
 
     const handleButtonClick = async () => {
       try {
-        console.log("\n[calling AWS sendLink()]\n");
-        const data = await sendLink(inputText);
-        console.log(data.text);
+        console.log("\ncalling AWS sendLink() on", inputText);
+        const data = await sendLink("rev.com/blog/transcripts/chatgpt-announces-ai-chatbot-can-now-speak-transcript");
+        console.log(data);
         // Handle data here...
     } catch (error) {
         console.error("Error in handleButtonClick:", error);
         // Handle the error (e.g., display an error message to the user).
     }
     }
+
+    // Inside your component
+//       const handleButtonClick = () => {
+//         console.log('clicked!')
+//       // Perform async operation
+//       sendLink(inputText)
+//       .then((data) => {
+//           console.log(data.text);
+//           response = data.text;
+//           // Handle the data here...
+//       })
+//       .catch((error) => {
+//           console.error("Error in handleButtonClick:", error);
+//           // Handle the error here...
+//       });
+// };
+
     
     
     return (
@@ -95,7 +133,12 @@ function TryVernum() {
                                   />
                                   : <div className="w-full h-14 px-6 py-4 rounded-[15px] border-2 border-black flex items-center">
                                         <div className="text-black text-base font-medium leading-normal">
-                                          Awaiting Results...
+                                        {clicked ? (
+                                          response
+                                        ) : (
+                                          "Awaiting Results..."
+                                        )}
+    
                                         </div>
                                     </div>
                               }

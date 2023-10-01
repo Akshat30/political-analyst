@@ -81,4 +81,17 @@ export async function sendLink(link) {
         .catch((err) => {
             throw err;
         });
+    // try {
+    //     const response = await fetch(url, params);
+
+    //     if (!response.ok) {
+    //         throw new Error(`Error ${response.status}: ${response.statusText}`);
+    //     }
+
+    //     const data = await response.json();
+    //     console.log(data);
+    //     return data;
+    // } catch (error) {
+    //     throw error;
+    // }
 }

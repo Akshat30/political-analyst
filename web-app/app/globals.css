@@ -10,6 +10,8 @@
 
 body {
   color: rgb(var(--foreground-rgb));
+  max-width: 100%;
+  overflow-x: hidden;
   /* gradient ?? */
   /* background: linear-gradient(
       to bottom,

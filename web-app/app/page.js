@@ -4,12 +4,17 @@ import Image from 'next/image'
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import arrow from './symbols/Arrow.png'
+import TranscriptCard from "/app/library/TranscriptCard.js";
+import { transcripts } from "./library/transcripts";
+import { AiFillCaretRight} from "react-icons/ai";
 
 export default function Home() {
 
   const [summarizeClicked, setSummarizeClicked] = useState(true);
   const [identifyClicked, setIdentifyClicked] = useState(false);
   const [documentClicked, setDocumentClicked] = useState(false);
+
+  const firstFourTranscripts = transcripts[1].slice(0, 3);
 
   const handleSummarizeClick = () => {
     setSummarizeClicked(prevState => !prevState);
@@ -47,30 +52,6 @@ export default function Home() {
       <span className="font-black animation-fade">{text}</span>
     );
   }
-
-  const Card = ({ title, date, speaker, pol_party }) => (
-    <div className="w-[535px] px-6 py-4 bg-zinc-100 rounded-[15px] justify-start items-center gap-6 inline-flex">
-      <div className="w-[99px] h-[100.01px] relative bg-sky-300 rounded-[10px]" />
-      <div className="grow shrink basis-0 flex-col justify-start items-start gap-2 inline-flex">
-        <div className="self-stretch h-[60px] flex-col justify-start items-start gap-1 flex">
-          <div className="justify-center items-center inline-flex">
-            <div className="text-neutral-900 text-2xl font-bold">{speaker}</div>
-            <div className="self-stretch px-2 py-1 bg-violet-700 rounded-[10px] justify-center items-center gap-2 inline-flex">
-              <div className="text-neutral-900 text-sm">{pol_party}</div>
-            </div>
-          </div>
-          <div className="self-stretch h-6 flex-col justify-start items-start gap-2.5 flex">
-            <div className="text-lg font-medium leading-normal text-black">{title}</div>
-          </div>
-        </div>
-        <div className="w-[364px] h-[27px] pr-[249px] pt-[3.49px] pb-[2.51px] justify-start items-center inline-flex">
-          <div className="w-[115px] self-stretch justify-center items-center inline-flex">
-            <div className="text-base font-normal leading-snug text-black">{date}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
 
   return (
     <>
@@ -187,7 +168,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-[1440px] h-[467px] py-14 bg-zinc-100 flex-col justify-center items-center gap-14 inline-flex">
+      <div className="w-[1440px] h-[467px] pt-7 bg-zinc-100 flex-col justify-center items-center gap-14 inline-flex">
       <div className="flex-col justify-start items-start gap-4 flex">
         <div className="h-[92px] flex-col justify-start items-start flex">
           <div className="flex-col justify-start items-start flex">
@@ -210,37 +191,37 @@ export default function Home() {
       </div>
     </div>
 
-    <div className="w-full h-[694.03px] mt-36 flex-col justify-start items-center gap-12 inline-flex">
+    <div className="w-full h-[550px] mt-24 flex-col justify-start items-center gap-12 inline-flex">
       <div className="flex-col justify-center items-center gap-2.5 flex">
         <div className="self-stretch h-[113px] flex-col justify-center items-start flex">
-          <div className="flex-col justify-start items-start gap-2.5 flex">
-            <div className="text-center text-violet-500 text-base font-bold leading-snug">Can’t get Started?</div>
-          </div>
-          <div className="py-2.5 justify-start items-center gap-2.5 inline-flex">
-            <div className="text-center text-neutral-900 text-4xl font-bold leading-[47.71px]">Read from our Extensive Library of Political Documents</div>
-          </div>
-            <div className="justify-start items-center gap-2.5 inline-flex">
-              <div className="text-center text-neutral-900 text-lg font-medium leading-normal">Pre-Analyzed documents from various political figures!</div>
-            </div>
+            <div className="text-center text-violet-500 text-base font-bold">Can’t get Started?</div>
+            <div className="text-center text-neutral-900 text-4xl font-bold py-2.5">Read from our Extensive Library of Political Documents</div>
+            <div className="text-center text-neutral-900 text-lg font-medium">Pre-Analyzed documents from various political figures!</div>
         </div>
       </div>
-      <div className="flex-col justify-start items-end gap-4 flex">
-        <div className="justify-center items-start gap-8 inline-flex">
-          <div className="self-stretch flex-col justify-start items-start gap-6 inline-flex">
-            <Card title="2020 Oval Office Address" date="March 11, 2020" speaker="Donald Trump" pol_party="Republican"/>
-            <Card title="2020 Oval Office Address" date="March 11, 2020" speaker="Donald Trump" pol_party="Republican"/>
-            <Card title="2020 Oval Office Address" date="March 11, 2020" speaker="Donald Trump" pol_party="Republican"/>
-          </div>
-            <div className="p-4 rounded-[20px] border-2 border-violet-700 justify-end items-center gap-2.5 flex">
-              <div className="justify-center items-center flex">
-                <div className="text-neutral-900 text-base font-black leading-snug">View Full Library</div>
-              </div>
-            </div>
+      <div className="w-9/12 grid grid-cols-3 gap-4">
+        {firstFourTranscripts.map((transcript, index) => (
+          <TranscriptCard
+          key={index}
+          name={transcript.name}
+          date={transcript.date}
+          speaker={transcript.speaker}
+          url={transcript.url}
+          img={transcript.img}
+        />
+        ))}
+      </div>
+      
+      <div className="w-9/12 flex justify-end">
+        <div className="w-[195px] h-[53px] p-4 rounded-[20px] border-2 border-violet-700 justify-center items-center gap-2.5 inline-flex">
+          <div className="text-neutral-900 text-center font-black">View Full Library</div>
         </div>
       </div>
+      
+      
     </div>
 
-    <div className="w-[1057px] h-[333px] m-40 p-9 bg-zinc-100 rounded-[30px] justify-center items-center gap-2.5 ">
+    <div className="w-[1057px] h-[333px] mx-48 my-36 p-9 bg-zinc-100 rounded-[30px] justify-center items-center gap-2.5 ">
       <div className="text-center text-violet-700 font-bold">Get Started!</div>
       <div className="text-center text-neutral-900 text-4xl font-bold mt-3">Embark on Unbiased Informed Voting</div>
       <div className="text-center text-neutral-900 text-lg font-medium mt-3">Why wait any longer? Name.Ai is brimming with all the essentials to kickstart your journey towards making impactful and well-informed voting decisions.</div>

@@ -29,6 +29,13 @@ export const transcripts = {
       img: primary,
     },
     {
+      name: "Exclusive Interview with FL Gov. Ron DeSantis\n\n",
+      date: "July 19, 2023",
+      speaker: "Ron DeSantis",
+      url: "https://www.rev.com/blog/transcripts/jake-tapper-exclusive-interview-with-fl-gov-ron-desantis-transcript",
+      img: ron,
+    },
+    {
       name: "Chris Christie Town Hall\n\n",
       date: "August 9, 2023",
       speaker: "Chris Christie",
@@ -41,13 +48,6 @@ export const transcripts = {
       speaker: "Vivek Ramaswamy",
       url: "https://www.rev.com/blog/transcripts/vivek-ramaswamy-says-hes-the-best-candidate-to-push-trumps-agenda-forward-transcript",
       img: vivek,
-    },
-    {
-      name: "Exclusive Interview with FL Gov. Ron DeSantis\n\n",
-      date: "July 19, 2023",
-      speaker: "Ron DeSantis",
-      url: "https://www.rev.com/blog/transcripts/jake-tapper-exclusive-interview-with-fl-gov-ron-desantis-transcript",
-      img: ron,
     },
     {
       name: "DeSantis unveils New Immigration and Border Policy \n\n",
