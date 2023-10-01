@@ -72,7 +72,7 @@ function About() {
             </div>
           </div>
         </div>
-        <div className="mt-20 bg-gray-100">
+        <div className="bg-gray-100">
           <div className="ml-12 px-20 mt-6">
             <h1 className="text-indigo-400 text-lg font-bold">Our Mission</h1>
             <h1 className="mt-2 text-[#131313] text-4xl font-bold">
@@ -90,7 +90,7 @@ function About() {
             </div>
           </div>
         </div>
-        <div className="mt-20 bg-gray-100">
+        <div className="bg-gray-100">
           <div className="ml-12 px-20 mt-6">
             <h1 className="text-indigo-400 text-lg font-bold">
               How Verum works
@@ -109,7 +109,6 @@ function About() {
             </div>
           </div>
         </div>
-        <div className="mt-20 bg-gray-100">
           <div className="ml-12 px-20 mt-6">
             <h1 className="text-indigo-400 text-lg font-bold">Hello there!</h1>
             <h1 className="mt-2 text-[#131313] text-4xl font-bold">
@@ -171,7 +170,6 @@ function About() {
               />
             </div>
           </div>
-        </div>
       </div>
     </>
   );
