@@ -19,15 +19,15 @@ function TryVernum() {
     const [inputText, setInputText] = useState('');
 
     const handleButtonClick = async () => {
-        // extactor api
-        // console.log("\n[calling AWS sendLink()\n");
-        // // const extractApi = process.env.EXTRACTER_API_KEY;
-        // // const endpoint = "https://extractorapi.com/api/v1/extractor";
-        // // const params = `apikey=${extractApi}&url=${inputText}`;
-        // // const response = await fetch(endpoint + "?" + params);
-        // const data = await sendLink(inputText);
-  
-        // console.log(data.text); // Assuming "text" is the key in the response containing the transcript
+      try {
+        console.log("\n[calling AWS sendLink()]\n");
+        const data = await sendLink(inputText);
+        console.log(data.text);
+        // Handle data here...
+    } catch (error) {
+        console.error("Error in handleButtonClick:", error);
+        // Handle the error (e.g., display an error message to the user).
+    }
     }
     
     
@@ -94,7 +94,9 @@ function TryVernum() {
                                     }}
                                   />
                                   : <div className="w-full h-14 px-6 py-4 rounded-[15px] border-2 border-black flex items-center">
-                                        <div className="text-black text-base font-medium leading-normal">Awaiting Results...</div>
+                                        <div className="text-black text-base font-medium leading-normal">
+                                          Awaiting Results...
+                                        </div>
                                     </div>
                               }
 
