@@ -9,6 +9,7 @@ function InputField({ placeholder, style, inputText, setInputText }) {
     <input 
       style={{
         ...style, 
+        color: '#000000',
         padding: '10px',
       }}
       type="text" 
