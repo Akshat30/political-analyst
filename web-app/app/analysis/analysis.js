@@ -81,17 +81,38 @@ export async function sendLink(link) {
         .catch((err) => {
             throw err;
         });
-    // try {
-    //     const response = await fetch(url, params);
+}
 
-    //     if (!response.ok) {
-    //         throw new Error(`Error ${response.status}: ${response.statusText}`);
-    //     }
+export async function sendLinkToAPI(link) {
+  if (typeof link !== "string" || link === "") {
+    throw new Error("link must be a non-empty string");
+  }
 
-    //     const data = await response.json();
-    //     console.log(data);
-    //     return data;
-    // } catch (error) {
-    //     throw error;
-    // }
+  const url = "https://xhjwcepvug.execute-api.us-west-1.amazonaws.com/analysis";
+  const body = {
+    text: "",
+    link: link,
+  };
+
+    const params = {
+      mode: "cors",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    };
+
+  try {
+    const response = await fetch(url, params);
+
+    if (response.status !== 200) {
+      throw new Error(`${response.status}: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    throw err;
+  }
 }
