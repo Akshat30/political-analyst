@@ -4,15 +4,12 @@ import "./upload-text-styles.css";
 import React, { useState } from "react";
 import InputField from "../components/input-field.client";
 //import BiasDetector from '../api/gpt.mjs'
-import validator from "validator"; // check urls
-import axios from "axios"; // api call
-import cheerio from "cheerio"; // parse html code from rev.com
 import Image from "next/image";
 import text_symbol from "./text.png";
 import link_symbol from "./link.png";
 import Link from "next/link";
 import { sendLink } from "/app/analysis/analysis.js";
-import { sendLinkToAPI } from "/app/analysis/analysis.js";
+import { sendTextToAPI } from "/app/analysis/analysis.js";
 
 function TryVernum() {
   const [inputText, setInputText] = useState("");
@@ -20,7 +17,8 @@ function TryVernum() {
 
   const handleButtonClick = async () => {
     try {
-      const data = await sendLinkToAPI(inputText);
+      const data = await sendTextToAPI(inputText);
+      
       setResponse(data);
     } catch (err) {
       console.log(err.message);
