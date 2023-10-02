@@ -1,12 +1,22 @@
 import { AiFillRightCircle } from "react-icons/ai";
 import Image from "next/image";
-import trump from "../presidential-candidates/candidate-imgs/trump.png";
+import { useRouter } from "next/navigation";
 
-function TranscriptCard({ name, speaker, date, url, img}) {
+function TranscriptCard({ name, speaker, date, url, img }) {
+  const router = useRouter();
+
+  const handleCardClick = () => {
+    // Encode the URL to make sure it's safe for use in a query parameter
+    const encodedUrl = encodeURIComponent(url);
+
+    // Redirect to the app/upload-link page with the URL as a query parameter
+    router.push(`/upload-link?url=${encodedUrl}`);
+  };
   return (
-    <a target="_blank" href={url}>
-      <div className="w-full rounded-xl transition duration-500 bg-gray-100 hover:bg-gray-200 hover:scale-[1.03]">
-        <div>
+    <div className="w-full rounded-xl transition duration-500 bg-gray-100 hover:bg-gray-200 hover:scale-[1.03]">
+      <div>
+        {/* Use an onClick handler to trigger the navigation */}
+        <div className="cursor-pointer" onClick={handleCardClick}>
           <div className="flex flex-col w-full">
             <div className="w-full px-6 py-6">
               <div className="relative h-54 w-full">
@@ -17,7 +27,12 @@ function TranscriptCard({ name, speaker, date, url, img}) {
               </div>
               <div className="flex flex-row">
                 <div className="w-3/4">
-                  <p style={{ whiteSpace: "pre-line" }} className="mt-4 text-gray-900 text-lg font-bold">{name}</p>
+                  <p
+                    style={{ whiteSpace: "pre-line" }}
+                    className="mt-4 text-gray-900 text-lg font-bold"
+                  >
+                    {name}
+                  </p>
                 </div>
                 <div className="w-1/4 flex justify-end mt-4 text-2xl">
                   <AiFillRightCircle className="text-gray-900" />
@@ -36,7 +51,7 @@ function TranscriptCard({ name, speaker, date, url, img}) {
           </div>
         </div>
       </div>
-    </a>
+    </div>
   );
 }
 
