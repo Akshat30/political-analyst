@@ -104,6 +104,42 @@ export async function sendLinkToAPI(link) {
     };
 
   try {
+    console.log("Sending Link to AWS");
+    const response = await fetch(url, params);
+
+    if (response.status !== 200) {
+      throw new Error(`${response.status}: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    throw err;
+  }
+}
+
+export async function sendTextToAPI(text) {
+  if (typeof text !== "string" || text === "") {
+    throw new Error("text must be a non-empty string");
+  }
+
+  const url = "https://xhjwcepvug.execute-api.us-west-1.amazonaws.com/analysis";
+  const body = {
+    text: text,
+    link: "",
+  };
+
+  const params = {
+    mode: "cors",
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  };
+
+  try {
+    console.log("sending text to aws");
     const response = await fetch(url, params);
 
     if (response.status !== 200) {
