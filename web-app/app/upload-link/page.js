@@ -47,7 +47,7 @@ function TryVernum() {
                     key={idx}
                   >
                     <div
-                      className={`w-[51px] h-[51px] p-[15px] bg-${
+                      className={`w-[51px] h-[51px] p-[15px] border-2 border-violet-700 bg-${
                         type === "text" ? "neutral" : "violet"
                       }-700 rounded-[10px] flex items-center gap-2.5`}
                     >
@@ -70,11 +70,11 @@ function TryVernum() {
                 <div className="text-center text-black text-base font-medium">
                   Don’t have a document to upload?
                 </div>
-                <div className="w-full px-9 py-4 rounded-[20px] border-2 border-black flex items-center justify-center ">
+                <Link href="/library"className="w-full px-9 py-4 rounded-[20px] border-2 border-black flex items-center justify-center ">
                   <div className="justify-center text-black text-lg font-medium leading-normal">
                     View Our Library
                   </div>
-                </div>
+                </Link>
               </div>
             </div>
           </div>
@@ -83,9 +83,7 @@ function TryVernum() {
           <div className="w-full flex flex-col items-start gap-10">
             {["Link Entry", "Verum"].map((title, idx) => (
               <div className="w-full flex flex-col items-start" key={idx}>
-                <div
-                  className={`h-[50px] pl-[31px] pr-8 py-[13px] bg-violet-700 rounded-t-[20px] flex items-center`}
-                >
+                <div className={`h-[50px] pl-[31px] pr-8 py-[13px] bg-violet-600 rounded-t-[20px] flex items-center`}>
                   <div className="text-zinc-100 text-base font-bold leading-normal">
                     {title}
                   </div>
@@ -129,9 +127,9 @@ function TryVernum() {
 
                   {title === "Link Entry" && (
                     <div className="w-full flex items-center justify-end gap-2.5">
-                      <div className="p-3 rounded-[20px] border-2 border-violet-700 hover:bg-violet-200 flex items-center gap-4">
+                      <div className="p-3 rounded-[20px] bg-violet-500 hover:bg-violet-700 flex items-center gap-4">
                         <button
-                          className="text-black text-lg font-semibold leading-normal"
+                          className="text-white text-lg font-semibold leading-normal"
                           onClick={handleButtonClick}
                         >
                           Send to Verum

@@ -9,12 +9,12 @@ function Navbar() {
       <div className="mx-10 mt-2">
         <div className="w-full pl-8 pr-6 py-4 rounded-[66px] border-2 border-black bg-white justify-center items-center gap-[33px] inline-flex">
           <div className="justify-center items-center gap-12 flex">
-            <div className="justify-center items-center flex">
+            <Link href="/" className="justify-center items-center flex">
               <div className="w-[70px] h-[35px] relative">
-              <Image src={logo}/>
+              <Image src={logo} alt=""/>
               </div>
-              <Link href="/" className="text-neutral-900 text-xl font-bold leading-normal">Verum</Link>
-            </div>
+              <div className="text-neutral-900 text-xl font-bold leading-normal">Verum</div>
+            </Link>
             <div className="justify-center items-center gap-6 flex">
               <Link href="/about" className="opacity-90 text-neutral-900 text-base font-medium leading-normal">About</Link>
               <Link href="/library" className="opacity-90 text-neutral-900 text-base font-medium leading-normal">Library</Link>
