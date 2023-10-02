@@ -14,14 +14,17 @@ import { sendTextToAPI } from "/app/analysis/analysis.js";
 function TryVernum() {
   const [inputText, setInputText] = useState("");
   const [response, setResponse] = useState("Awaiting Results...");
+  const [loading, setLoading] = useState(false);
 
   const handleButtonClick = async () => {
+    setLoading(true);
     try {
       const data = await sendTextToAPI(inputText);
-      
       setResponse(data);
     } catch (err) {
       console.log(err.message);
+    } finally {
+      setLoading(false); // Set loading state back to false when the response is received
     }
   };
 
@@ -91,7 +94,7 @@ function TryVernum() {
                 <div
                   className={`w-full ${
                     title === "Text Entry" ? "h-[223px]" : "h-36"
-                  } p-6 bg-zinc-100 rounded-b-[20px] rounded-r-[20px] flex flex-col items-start gap-6`}
+                  } p-6 bg-zinc-100 rounded-b-[20px] rounded-r-[20px] flex flex-col items-start gap-6`} style={{ minHeight: title === "Text Entry" ? 'auto' : '24rem' }}
                 >
                   <div className="text-black text-base font-medium leading-normal">
                     {title === "Text Entry"
@@ -118,9 +121,37 @@ function TryVernum() {
                       }}
                     />
                   ) : (
-                    <div className="w-full h-14 px-6 py-4 rounded-[15px] border-2 border-black flex items-center">
-                      <div className="text-black text-base font-medium leading-normal">
-                        {response}
+                    <div className="w-full h-14 px-6 py-4 rounded-[15px] border-2 border-black flex flex-col items-start" style={{ minHeight: '18rem', overflow: 'auto' }}>
+                      <div className="text-black text-base font-medium leading-normal flex-grow">
+                        {loading ? (
+                            <div className="flex items-center">
+                              <div>Loading...</div>
+                              <div className="ml-auto">
+                                <svg
+                                  className="animate-spin h-4 w-4 text-violet-700 ml-2"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <circle
+                                    className="opacity-25"
+                                    cx="12"
+                                    cy="12"
+                                    r="10"
+                                    stroke="currentColor"
+                                    strokeWidth="4"
+                                  ></circle>
+                                  <path
+                                    className="opacity-75"
+                                    fill="currentColor"
+                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 6.627 5.373 12 12 12v-4c-3.313 0-6-2.687-6-6z"
+                                  ></path>
+                                </svg>
+                              </div>
+                            </div>
+                          ) : (
+                            response
+                          )}
                       </div>
                     </div>
                   )}

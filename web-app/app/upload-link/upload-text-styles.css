@@ -37,3 +37,7 @@
 .center {
     justify-content: center;
 }
+
+.response {
+    height: fit-content;
+}

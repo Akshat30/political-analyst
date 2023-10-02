@@ -160,14 +160,6 @@ function About() {
                 portfolio={"https://julianaviado.com/"}
                 linkedin={"https://www.linkedin.com/in/juliana-viado"}
               />
-              <TeamMember
-                img={defaultImg}
-                name={"Celeste Lu"}
-                role={"Product Designer -- UX Researcher"}
-                occupation={"UX & Product Designer"}
-                schoolInfo={"'24 Design Student @ UC Davis"}
-                portfolio={"/about"}
-              />
             </div>
           </div>
       </div>
