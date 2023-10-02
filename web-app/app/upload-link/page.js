@@ -1,18 +1,37 @@
 "use client";
 
 import "./upload-text-styles.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InputField from "../components/input-field.client";
 import Image from "next/image";
 import text_symbol from "./text.png";
 import link_symbol from "./link.png";
 import Link from "next/link";
 import { sendLinkToAPI } from "/app/analysis/analysis.js";
+import { useSearchParams } from "next/navigation";
 
 function TryVernum() {
+  const searchParams = useSearchParams();
+  const url = searchParams.get("url");
   const [inputText, setInputText] = useState("");
   const [response, setResponse] = useState("Awaiting Results...");
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const decodedUrl = decodeURIComponent(url.toString());
+    console.log(decodedUrl);
+    setInputText(decodedUrl);
+
+    // Call the sendLinkToAPI function with the decoded URL
+
+    sendLinkToAPI(decodedUrl)
+      .then((data) => {
+        setResponse(data);
+      })
+      .catch((err) => {
+        console.error(err.message);
+      });
+  }, [url]);
 
   const handleButtonClick = async () => {
     setLoading(true);
