@@ -45,7 +45,7 @@ function TryVernum() {
                     key={idx}
                   >
                     <div
-                      className={`w-[51px] h-[51px] p-[15px] bg-${
+                      className={`w-[51px] h-[51px] p-[15px] border-2 border-violet-700 bg-${
                         type === "link" ? "neutral" : "violet"
                       }-700 rounded-[10px] flex items-center gap-2.5`}
                     >
@@ -127,7 +127,7 @@ function TryVernum() {
 
                   {title === "Text Entry" && (
                     <div className="w-full flex items-center justify-end gap-2.5">
-                      <div className="p-3 rounded-[20px] bg-violet-500 hover:bg-violet-200 flex items-center gap-4">
+                      <div className="p-3 rounded-[20px] bg-violet-500 hover:bg-violet-700 flex items-center gap-4">
                         <button
                           className="text-white text-lg font-semibold leading-normal"
                           onClick={handleButtonClick}

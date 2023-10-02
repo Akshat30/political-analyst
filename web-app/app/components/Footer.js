@@ -15,7 +15,7 @@ export default function Footer() {
       <div className="grow shrink basis-0 flex-col justify-start items-start gap-4 inline-flex">
         <div className="justify-center items-center gap-2.5 inline-flex">
           <div className="w-[70px] h-[35px] relative">
-              <Image src={logo}/>
+              <Image src={logo} alt=""/>
             </div>
           <div className="text-neutral-900 text-2xl font-bold leading-normal">Verum</div>
         </div>
