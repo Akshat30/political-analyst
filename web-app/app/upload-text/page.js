@@ -84,7 +84,7 @@ function TryVernum() {
             {["Text Entry", "Verum"].map((title, idx) => (
               <div className="w-full flex flex-col items-start" key={idx}>
                 <div
-                  className={`h-[50px] pl-[31px] pr-8 py-[13px] bg-violet-700 rounded-t-[20px] flex items-center`}
+                  className={`h-[50px] pl-[31px] pr-8 py-[13px] bg-violet-600 rounded-t-[20px] flex items-center`}
                 >
                   <div className="text-zinc-100 text-base font-bold leading-normal">
                     {title}
@@ -129,9 +129,9 @@ function TryVernum() {
 
                   {title === "Text Entry" && (
                     <div className="w-full flex items-center justify-end gap-2.5">
-                      <div className="p-3 rounded-[20px] border-2 border-violet-700 hover:bg-violet-200 flex items-center gap-4">
+                      <div className="p-3 rounded-[20px] bg-violet-500 hover:bg-violet-200 flex items-center gap-4">
                         <button
-                          className="text-black text-lg font-semibold leading-normal"
+                          className="text-white text-lg font-semibold leading-normal"
                           onClick={handleButtonClick}
                         >
                           Send to Verum

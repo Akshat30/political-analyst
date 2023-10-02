@@ -65,10 +65,10 @@ export default function Home() {
       </div>
     
       <div className="flex items-center gap-6">
-          <Link href="/presidential-candidates" className="px-10 py-[18px] rounded-full border-2 border-black flex items-center gap-[18.41px]">
-              <div className="text-center text-black text-lg font-bold leading-7">View Presidential Candidates</div>
+          <Link href="/presidential-candidates" className="px-10 py-[18px] rounded-full hover:bg-black text-black hover:text-white border-2 border-black flex items-center gap-[18.41px]">
+              <div className="text-center  text-lg font-bold leading-7">View Presidential Candidates</div>
           </Link>
-          <Link href="/upload-text" className="h-16 px-12 py-[18px] bg-violet-700 rounded-full flex items-center gap-[17.51px]">
+          <Link href="/upload-text" className="h-16 px-12 py-[18px] bg-violet-700 hover:bg-violet-900 rounded-full flex items-center gap-[17.51px]">
               <div className="text-center text-neutral-200 text-lg font-bold leading-7">Try Verum</div>
           </Link>
       </div>
@@ -119,7 +119,7 @@ export default function Home() {
               <div className="w-[490px] flex flex-col gap-2">
                   <div className="text-black text-2xl text-left font-bold leading-[30px]">Identify Biases</div>
                   <div className="text-left text-black text-lg font-normal leading-[30px]">
-                      Using Verum, you can upload your document and receive a full summarization of the document highlighting key points, details, and facts.
+                      Effortlessly scan, identify, and flag any biases and inconsistencies found within a document.
                   </div>
               </div>
               <div className="w-[524px] h-[278px] bg-neutral-900 rounded-[10px]" />
@@ -213,9 +213,9 @@ export default function Home() {
       </div>
       
       <div className="w-9/12 flex justify-end">
-        <div className="w-[195px] h-[53px] p-4 rounded-[20px] border-2 border-violet-700 justify-center items-center gap-2.5 inline-flex">
-          <div className="text-neutral-900 text-center font-black">View Full Library</div>
-        </div>
+        <Link href="/library" className="w-[195px] h-[53px] p-4 rounded-[20px] text-neutral-900 hover:text-white hover:bg-violet-700 border-2 border-violet-700 justify-center items-center gap-2.5 inline-flex">
+          <div className=" text-center font-black">View Full Library</div>
+        </Link>
       </div>
       
       
@@ -224,9 +224,9 @@ export default function Home() {
     <div className="w-[1057px] h-[333px] mx-48 my-36 p-9 bg-zinc-100 rounded-[30px] justify-center items-center gap-2.5 ">
       <div className="text-center text-violet-700 font-bold">Get Started!</div>
       <div className="text-center text-neutral-900 text-4xl font-bold mt-3">Embark on Unbiased Informed Voting</div>
-      <div className="text-center text-neutral-900 text-lg font-medium mt-3">Why wait any longer? Name.Ai is brimming with all the essentials to kickstart your journey towards making impactful and well-informed voting decisions.</div>
-      <Link href="/upload-text" className="w-[218px] h-[72px] px-10 py-5 mx-96 my-10 bg-violet-700 rounded-[20px] justify-center items-center gap-2.5 inline-flex">
-        <div className="text-zinc-100 text-lg font-medium leading-normal">Try Verum</div>
+      <div className="text-center text-neutral-900 text-lg font-medium mt-3">Why wait any longer? Verum is brimming with all the essentials to kickstart your journey towards making impactful and well-informed voting decisions.</div>
+      <Link href="/upload-text" className="w-[218px] h-[72px] px-10 py-5 mx-96 my-10 bg-violet-700 hover:bg-violet-900 rounded-[20px] justify-center items-center gap-2.5 inline-flex">
+        <div className="text-zinc-100 font-extrabold text-lg font-medium leading-normal">Try Verum</div>
       </Link>
     </div>
 
