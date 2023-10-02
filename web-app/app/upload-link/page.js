@@ -18,19 +18,21 @@ function TryVernum() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const decodedUrl = decodeURIComponent(url.toString());
-    console.log(decodedUrl);
-    setInputText(decodedUrl);
+    if (url && url != "") {
+      const decodedUrl = decodeURIComponent(url.toString());
+      console.log(decodedUrl);
+      setInputText(decodedUrl);
 
-    // Call the sendLinkToAPI function with the decoded URL
+      // Call the sendLinkToAPI function with the decoded URL
 
-    sendLinkToAPI(decodedUrl)
-      .then((data) => {
-        setResponse(data);
-      })
-      .catch((err) => {
-        console.error(err.message);
-      });
+      sendLinkToAPI(decodedUrl)
+        .then((data) => {
+          setResponse(data);
+        })
+        .catch((err) => {
+          console.error(err.message);
+        });
+    }
   }, [url]);
 
   const handleButtonClick = async () => {
