@@ -68,7 +68,8 @@ function TryVernum() {
         <div className="ml-20">
           <p className="mb-2 text-xl font-semibold text-indigo-600">Library</p>
           <h1 className="text-[#131313] text-4xl font-bold">
-            Explore Verum's Library of Political Speeches, Articles, and more.
+            Explore Verum&apos;s Library of Political Speeches, Articles, and
+            more.
           </h1>
           <div className="w-2/3 mt-4">
             <p className="text-gray-400 text-lg font-semibold">
